@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "blog": ["/src/blog.ts"]
+      "blog": ["./src/blog.ts"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

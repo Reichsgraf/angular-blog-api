@@ -5,6 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 // shared modules
 import { SharedModule } from './shared/shared.module';
 
+// Http
+import { HttpClientModule } from '@angular/common/http';
+
 export const ROUTES: Routes = [
   {
     path: '',
@@ -20,8 +23,8 @@ export const ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
-    SharedModule
-    // another modules for work with db/connect?
+    SharedModule.forRoot(),
+    HttpClientModule
   ],
   declarations: [],
   providers: []

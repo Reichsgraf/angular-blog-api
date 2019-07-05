@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Blog } from '../blog';
+// @ts-ignore
+import { Blog } from 'blog';
 
 // feature modules
 import { AuthModule } from '../auth/auth.module';
