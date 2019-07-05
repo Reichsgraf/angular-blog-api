@@ -32,8 +32,7 @@ export class AuthService {
   // register
   createUser(email: string, password: string) {
     const body = { email, password };
-    this.http.get('temp.json')
-      .subscribe(res => console.log(res));
+    return this.http.post('http://localhost:3000/api/auth/register', body);
     // TODO: add register
     // TODO: replace with api in future: /api/register?
     // TODO: add return Observable<any> and error
@@ -42,12 +41,13 @@ export class AuthService {
   // login
   loginUser(email: string, password: string) {
     const body = { email, password };
-    this.http.get('temp.json')
-      .subscribe(res => {
-        if (JSON.stringify(body) === JSON.stringify(res)) {
+    return this.http.post('http://localhost:3000/api/auth/login', body);
+      /*.subscribe(res => {
+        console.log(res);
+        /!*if (JSON.stringify(body) === JSON.stringify(res)) {
             console.log('Find!');
-          }
-      });
+          }*!/
+      });*/
     // TODO: add another verification logic (?)/hash-password?
     // TODO: replace with api in future: /api/login?
     // TODO: add return Observable<any> and error

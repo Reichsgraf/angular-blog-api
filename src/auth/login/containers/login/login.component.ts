@@ -31,10 +31,11 @@ export class LoginComponent {
   async loginUser(event: FormGroup) {
     const { email, password } = event.value;
     try {
-      this.authService.loginUser(email, password);
-      this.router.navigate(['/']); // navigate to index in future (?)
+      this.authService.loginUser(email, password)
+        .subscribe(res => console.log('Result:', res));
     } catch (err) {
       this.error = err.message;
     }
+    this.router.navigate(['/']); // navigate to index in future (?)
   }
 }

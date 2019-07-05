@@ -33,7 +33,8 @@ export class RegisterComponent {
   async registerUser(event: FormGroup) {
     const { email, password } = event.value;
     try {
-      this.authService.createUser(email, password);
+      this.authService.createUser(email, password)
+        .subscribe(res => console.log('Result:', res));
       this.router.navigate(['/']); // navigate to index in future (?)
     } catch (err) {
       this.error = err.message;
