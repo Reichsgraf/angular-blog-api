@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'register',
   template: `
   <div>
-    <auth-form>
+    <auth-form (submitted)="registerUser($event)">
       <h1>Register</h1>
       <a routerLink="/login">Already have an account?</a>
       <button type="submit">Create account</button>
@@ -14,5 +15,9 @@ import { Component } from "@angular/core";
 })
 export class RegisterComponent {
   constructor() {}
+
+  registerUser(event: FormGroup) {
+    console.log(event.value);
+  }
 
 }
