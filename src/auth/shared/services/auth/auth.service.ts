@@ -1,55 +1,72 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// @ts-ignore
+import { pluck, tap } from 'rxjs/operators';
+
 import { Blog } from 'blog';
 
 export interface User {
   email: string;
+  uid: string;
   authenticated: boolean;
-  // FIXME: id? name?
 }
+
+// post structure
+/*export interface Post {
+  title: string;
+  author: string;
+  content: string;
+  image: string;
+  description: string;
+}*/
 
 @Injectable()
 export class AuthService {
 
+  isAuthenticated$;
+
   constructor(
     private blog: Blog,
     private http: HttpClient
-  ) {}
+  ) {
+    this.isAuthenticated$ = false;
+  }
 
-  // TODO: authentication
-  /* observable.do_if_non_auth: this.store.set('user', null)
-  else: const user: User = { email: email, authenticated: true, id...}
-  and this.store.set('user', user);
-  another variants?
-  ngOnInit/ngOnDestroy with observable - not available in Inject.
-  RouteGuards? (--)
-  BehaviorSubject?
-  Interceptors?
-  learn for AuthState from FireBase.*/
+  public getToken(): string {
+    return localStorage.getItem('token');
+  }
+
+  private setToken(token: string): void {
+    localStorage.setItem('token', token);
+    this.isAuthenticated$ = true;
+  }
+
+  /*public isAuthenticated() {
+    const token = this.getToken();
+    console.log(token);
+    return !!token;
+  }*/
 
   // register
   createUser(email: string, password: string) {
     const body = { email, password };
     return this.http.post('http://localhost:3000/api/auth/register', body);
-    // TODO: add register
-    // TODO: replace with api in future: /api/register?
-    // TODO: add return Observable<any> and error
   }
 
   // login
   loginUser(email: string, password: string) {
     const body = { email, password };
-    return this.http.post('http://localhost:3000/api/auth/login', body);
-      /*.subscribe(res => {
-        console.log(res);
-        /!*if (JSON.stringify(body) === JSON.stringify(res)) {
-            console.log('Find!');
-          }*!/
-      });*/
-    // TODO: add another verification logic (?)/hash-password?
-    // TODO: replace with api in future: /api/login?
-    // TODO: add return Observable<any> and error
+    return this.http.post('http://localhost:3000/api/auth/login', body)
+      .pipe(
+        pluck('token'),
+        tap((token: string) => this.setToken(token))
+      );
+  }
+
+  // logout
+  logoutUser() {
+    localStorage.clear();
+    this.isAuthenticated$ = false;
   }
 }
+

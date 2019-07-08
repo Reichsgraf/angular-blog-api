@@ -17,7 +17,6 @@ export const ROUTES: Routes = [
   ],
   declarations: [
     RegisterComponent
-  ],
-  providers: []
+  ]
 })
 export class RegisterModule {}

@@ -16,7 +16,6 @@ import { AuthService } from './services/auth/auth.service';
   declarations: [
     AuthFormComponent
   ],
-  providers: [],
   exports: [
     AuthFormComponent
   ]

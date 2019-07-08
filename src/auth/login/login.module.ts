@@ -17,7 +17,6 @@ export const ROUTES: Routes = [
   ],
   declarations: [
     LoginComponent
-  ],
-  providers: []
+  ]
 })
 export class LoginModule {}

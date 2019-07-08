@@ -10,7 +10,7 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
   <div>
     <auth-form (submitted)="loginUser($event)">
       <h1>Login</h1>
-      <a routerLink="/register">Not registered?</a>
+      <a routerLink="/auth/register">Not registered?</a>
       <button type="submit">Login</button>
       <div class="error" *ngIf="error">
         {{ error }}
@@ -30,12 +30,13 @@ export class LoginComponent {
 
   async loginUser(event: FormGroup) {
     const { email, password } = event.value;
-    try {
-      this.authService.loginUser(email, password)
-        .subscribe(res => console.log('Result:', res));
-    } catch (err) {
-      this.error = err.message;
-    }
-    this.router.navigate(['/']); // navigate to index in future (?)
+    this.authService.loginUser(email, password)
+      .subscribe(
+        () => {
+          this.error = '';
+          this.router.navigate(['/']); // navigate to index in future (?)
+        },
+        err => this.error = err.message
+      );
   }
 }

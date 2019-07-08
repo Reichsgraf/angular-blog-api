@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from '../auth/shared/services/interceptors/api.interceptor';
 
 // @ts-ignore
 import { Blog } from 'blog';
@@ -12,21 +14,34 @@ import { AuthModule } from '../auth/auth.module';
 import { AppComponent } from './containers/app/app.component';
 
 // components
+import { AppHeaderComponent } from './components/app-header/app-header.component';
+
+// services
+import { AuthService } from '../auth/shared/services/auth/auth.service';
 
 // routes
-export const ROUTES: Routes = [];
+export const ROUTES: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'blog'}
+];
 
 @NgModule({
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    AppHeaderComponent
   ],
   providers: [
-    Blog
+    Blog,
+    AuthService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [
     AppComponent

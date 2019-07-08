@@ -10,7 +10,7 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
   <div>
     <auth-form (submitted)="registerUser($event)">
       <h1>Register</h1>
-      <a routerLink="/login">Already have an account?</a>
+      <a routerLink="/auth/login">Already have an account?</a>
       <button type="submit">Create account</button>
       <div class="error" *ngIf="error">
         {{ error }}
@@ -23,8 +23,6 @@ export class RegisterComponent {
 
   error: string;
 
-  temp: Temp;
-
   constructor(
     private authService: AuthService,
     private router: Router
@@ -32,18 +30,16 @@ export class RegisterComponent {
 
   async registerUser(event: FormGroup) {
     const { email, password } = event.value;
-    try {
-      this.authService.createUser(email, password)
-        .subscribe(res => console.log('Result:', res));
-      this.router.navigate(['/']); // navigate to index in future (?)
-    } catch (err) {
-      this.error = err.message;
-    }
+    this.authService.createUser(email, password)
+      .subscribe(
+        () => {
+          this.error = '';
+          this.router.navigate(['/']); // navigate to index in future (?)
+        },
+        err => {
+          this.error = err.message;
+        }
+      );
   }
 
-}
-
-export class Temp {
-  email: string;
-  password: string;
 }
