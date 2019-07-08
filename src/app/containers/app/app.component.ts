@@ -11,6 +11,7 @@ import { AuthService } from '../../../auth/shared/services/auth/auth.service';
   template: `
     <div>
       <app-header
+        [authService]="authService"
         (logout)="onLogout()">
       </app-header>
       <div class="wrapper">
