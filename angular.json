@@ -22,12 +22,9 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
             "assets": [
-              "src/temp.json"
-            ],
-            "styles": [],
-            "scripts": []
+              "src/img"
+            ]
           },
           "configurations": {
             "production": {
@@ -81,7 +78,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/assets/img",
+              "src/img",
               "src/favicon.ico"
             ],
             "styles": [],

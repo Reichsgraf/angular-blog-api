@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { User, AuthService } from '../../../auth/shared/services/auth/auth.service';
+import { AuthService } from '../../../auth/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +9,9 @@ import { User, AuthService } from '../../../auth/shared/services/auth/auth.servi
   template: `
     <div class="app-header">
       <div class="wrapper">
+        <img src="/img/favicon.ico">
         <div
-          class="app-header__user-info"
-          *ngIf="(authService | async)?.isAuthenticated$">
+          class="app-header__user-info">
           <span (click)="logoutUser()"></span>
         </div>
       </div>
@@ -21,7 +21,6 @@ import { User, AuthService } from '../../../auth/shared/services/auth/auth.servi
 export class AppHeaderComponent {
 
   @Input()
-  user: User;
   authService: AuthService;
 
   @Output()
