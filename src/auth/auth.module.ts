@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 // Http
 import { HttpClientModule } from '@angular/common/http';
 
-// shared modules
+// shared models
 import { SharedModule } from './shared/shared.module';
 
 

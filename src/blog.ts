@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { User } from './auth/shared/services/auth/auth.service';
+import { User } from './auth/shared/models/user.interface';
 
 export interface State {
   user: User;

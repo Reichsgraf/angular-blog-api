@@ -7,14 +7,14 @@ import { TokenInterceptor } from '../auth/shared/services/interceptors/api.inter
 // @ts-ignore
 import { Blog } from 'blog';
 
-// feature modules
+// feature models
 import { AuthModule } from '../auth/auth.module';
 
 // containers
-import { AppComponent } from './containers/app/app.component';
+import { AppComponent } from './app.component';
 
 // components
-import { AppHeaderComponent } from './components/app-header/app-header.component';
+import { AppHeaderComponent } from './app-header/app-header.component';
 
 // services
 import { AuthService } from '../auth/shared/services/auth/auth.service';

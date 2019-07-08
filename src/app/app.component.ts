@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Blog } from 'blog';
 
-import { AuthService } from '../../../auth/shared/services/auth/auth.service';
+import { AuthService } from '../auth/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -28,9 +28,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.user$.subscribe(user => console.log(user));
+  }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.authService.user$.unsubscribe();
+  }
 
   async onLogout() {
     await this.authService.logoutUser();

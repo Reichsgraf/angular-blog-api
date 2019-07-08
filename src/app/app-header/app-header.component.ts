@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { AuthService } from '../../../auth/shared/services/auth/auth.service';
+import { AuthService } from '../../auth/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import { AuthService } from '../../../auth/shared/services/auth/auth.service';
   template: `
     <div class="app-header">
       <div class="wrapper">
-        <img src="/img/favicon.ico">
+        <img src="/assets/favicon.ico">
         <div
           class="app-header__user-info"
           *ngIf="authService.getToken()">
