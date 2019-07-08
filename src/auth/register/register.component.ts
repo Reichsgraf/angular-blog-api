@@ -36,9 +36,7 @@ export class RegisterComponent {
           this.error = '';
           this.router.navigate(['/']); // navigate to index in future (?)
         },
-        err => {
-          this.error = err.message;
-        }
+        err => this.error = err.statusText
       );
   }
 
