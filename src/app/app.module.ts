@@ -9,6 +9,7 @@ import { Blog } from 'blog';
 
 // feature models
 import { AuthModule } from '../auth/auth.module';
+import { BlogModule } from '../blog/blog.module';
 
 // containers
 import { AppComponent } from './app.component';
@@ -21,7 +22,7 @@ import { AuthService } from '../auth/shared/services/auth/auth.service';
 
 // routes
 export const ROUTES: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'blog'}
+  { path: '', pathMatch: 'full', redirectTo: 'blog' }
 ];
 
 @NgModule({
@@ -29,6 +30,7 @@ export const ROUTES: Routes = [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     AuthModule,
+    BlogModule,
     HttpClientModule
   ],
   declarations: [

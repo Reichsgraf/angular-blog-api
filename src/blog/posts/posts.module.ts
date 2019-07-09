@@ -4,10 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { Post } from '../shared/models/post.interface';
 
-//import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from '../shared/shared.module';
 
 // components
-//import { FormComponent } from
 
 // containers
 import { PostsComponent } from './containers/posts/posts.component';
@@ -24,7 +23,11 @@ export const ROUTES: Routes = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(ROUTES),
+    SharedModule.forRoot()
   ],
-  declarations: []
+  declarations: [
+    PostsComponent,
+    PostComponent
+  ]
 })
 export class PostsModule {}

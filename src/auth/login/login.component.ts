@@ -34,7 +34,7 @@ export class LoginComponent {
       .subscribe(
         () => {
           this.error = '';
-          this.router.navigate(['/']); // navigate to index in future (?)
+          this.router.navigate(['/']);
         },
         err => this.error = err.statusText
       );

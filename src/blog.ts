@@ -5,14 +5,17 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import { User } from './auth/shared/models/user.interface';
+import { Post } from './blog/shared/models/post.interface';
 
 export interface State {
   user: User;
+  // posts: Post[]
   [key: string]: any;
 }
 
 const state: State = {
   user: undefined
+  // posts: undefined
 };
 
 export class Blog {
