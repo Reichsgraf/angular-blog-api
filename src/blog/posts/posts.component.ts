@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Blog } from 'blog';
-import { PostsService } from '../../../shared/services/posts/posts.service';
+import { Post } from '../shared/models/post.interface';
+import { PostsService } from '../shared/services/posts/posts.service';
 
 @Component({
   selector: 'posts',
@@ -18,10 +19,11 @@ import { PostsService } from '../../../shared/services/posts/posts.service';
           Create
         </a>
       </div>
-      <div *ngIf="error">
-        <div class="message">
+      <div>
+        <div class="message" *ngIf="error">
           {{ error }}
         </div>
+        <!-- ngfor -->
       </div>
     </div>
   `
@@ -44,11 +46,13 @@ export class PostsComponent implements OnInit, OnDestroy {
       err => this.error = err.statusText
     );
     this.postsService.posts$
-      .subscribe(post => console.log(post));
+      .subscribe(post => {
+        console.log(post);
+      });
   }
 
   ngOnDestroy() {
-    this.postsService.posts$.unsubscribe();
+    // this.postsService.posts$.unsubscribe();
   }
 
 }

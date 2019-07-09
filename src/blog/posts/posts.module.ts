@@ -7,10 +7,11 @@ import { Post } from '../shared/models/post.interface';
 import { SharedModule } from '../shared/shared.module';
 
 // components
+import { PostFormComponent } from './post-form/post-form.component';
 
 // containers
-import { PostsComponent } from './containers/posts/posts.component';
-import { PostComponent } from './containers/post/post.component';
+import { PostsComponent } from './posts.component';
+import { PostComponent } from './post/post.component';
 
 export const ROUTES: Routes = [
   { path: '', component: PostsComponent },
@@ -27,7 +28,8 @@ export const ROUTES: Routes = [
   ],
   declarations: [
     PostsComponent,
-    PostComponent
+    PostComponent,
+    PostFormComponent
   ]
 })
 export class PostsModule {}
