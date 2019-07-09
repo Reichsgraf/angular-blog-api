@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 // shared models
-import { SharedModule } from './shared/shared.module';
+import { SharedAuthModule } from '../../shared/shared.auth.module';
 
 
 export const ROUTES: Routes = [
@@ -24,7 +24,7 @@ export const ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
-    SharedModule.forRoot(),
+    SharedAuthModule.forRoot(),
     HttpClientModule
   ],
   declarations: [],

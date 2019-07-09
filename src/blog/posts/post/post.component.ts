@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Post } from '../../shared/models/post.interface';
+import { Post } from '../../../app/shared/models/post.interface';
 
 @Component({
   selector: 'post',

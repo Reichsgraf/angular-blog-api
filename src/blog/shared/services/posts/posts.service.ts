@@ -5,9 +5,9 @@ import { Observable, Subject } from 'rxjs';
 import { pluck, tap } from 'rxjs/operators';
 
 import { Blog } from 'blog';
-import { Post } from '../../models/post.interface';
+import { Post } from '../../../../app/shared/models/post.interface';
 
-import { AuthService } from '../../../../auth/shared/services/auth/auth.service';
+import { AuthService } from '../../../../app/core/services/auth.service';
 
 @Injectable()
 export class PostsService {

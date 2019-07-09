@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import 'rxjs/add/operator/do';
 
 import { Blog } from 'blog';
-import { User } from '../../models/user.interface';
+import { User } from '../../shared/models/user.interface';
 
 @Injectable()
 export class AuthService {

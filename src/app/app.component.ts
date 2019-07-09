@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Blog } from 'blog';
 
-import { AuthService } from '../auth/shared/services/auth/auth.service';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',

@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 
 // guards
-import { AuthGuard } from '../auth/shared/guards/auth.guard';
+import { AuthGuard } from '../app/shared/guards/auth.guard';
 
 export const ROUTES: Routes = [
   { path: 'blog', canActivate: [AuthGuard], loadChildren: './posts/posts.module#PostsModule' }

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Blog } from 'blog';
-import { Post } from '../shared/models/post.interface';
+import { Post } from '../../app/shared/models/post.interface';
 import { PostsService } from '../shared/services/posts/posts.service';
 
 @Component({

@@ -2,23 +2,23 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from '../auth/shared/services/interceptors/api.interceptor';
+import { TokenInterceptor } from './core/services/interceptors/api.interceptor';
 
 // @ts-ignore
 import { Blog } from 'blog';
 
 // feature models
-import { AuthModule } from '../auth/auth.module';
+import { AuthModule } from './core/authentication/auth.module';
 import { BlogModule } from '../blog/blog.module';
 
 // containers
 import { AppComponent } from './app.component';
 
 // components
-import { AppHeaderComponent } from './app-header/app-header.component';
+import { AppHeaderComponent } from './core/app-header/app-header.component';
 
 // services
-import { AuthService } from '../auth/shared/services/auth/auth.service';
+import { AuthService } from './core/services/auth.service';
 
 // routes
 export const ROUTES: Routes = [
