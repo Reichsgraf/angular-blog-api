@@ -12,14 +12,13 @@ import { AuthService } from '../../../../app/core/services/auth.service';
 @Injectable()
 export class PostsService {
 
-  posts$ = new Subject<Array<Post>>();
+  posts$ = new Subject<Post>();
 
   constructor(
     private blog: Blog,
     private http: HttpClient,
     private authService: AuthService
   ) {}
-
 
   getPostInfo() {
     const request = this.http.get('http://localhost:3000/api/posts');
@@ -35,5 +34,16 @@ export class PostsService {
   }
 
   // TODO: postsIsExist -- how to verify isEmpty?
+
+  addPost(post: Post) {
+    console.log('Sending post:', post);
+    // http.post
+    return this.http.post('http://localhost:3000/api/posts', post);
+  }
+
+  removePost(id: string) {
+    return console.log('Delete?..');
+    // http.post
+  }
 
 }

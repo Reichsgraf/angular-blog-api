@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Post } from '../../../app/shared/models/post.interface';
+import { PostsService } from '../../shared/services/posts/posts.service';
 
 @Component({
   selector: 'post',
@@ -20,9 +23,18 @@ import { Post } from '../../../app/shared/models/post.interface';
   `
 })
 export class PostComponent {
-  constructor() {}
+  constructor(
+    private postsService: PostsService,
+    private router: Router
+  ) {}
 
-  addPost(event: Post) {
-    console.log('Post: ', event);
+  async addPost(event: Post) {
+    await this.postsService.addPost(event);
+    this.backToBlog();
   }
+
+  backToBlog() {
+    this.router.navigate(['blog']);
+  }
+
 }

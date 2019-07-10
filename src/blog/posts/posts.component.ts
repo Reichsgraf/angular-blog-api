@@ -19,11 +19,14 @@ import { PostsService } from '../shared/services/posts/posts.service';
           Create
         </a>
       </div>
-      <div>
+      <div *ngIf="this.postsList as posts">
         <div class="message" *ngIf="error">
           {{ error }}
         </div>
-        <!-- ngfor -->
+        <list-item
+          *ngFor="let post of posts"
+          [item]="post">
+        </list-item>
       </div>
     </div>
   `
@@ -31,6 +34,7 @@ import { PostsService } from '../shared/services/posts/posts.service';
 export class PostsComponent implements OnInit, OnDestroy {
 
   error: string;
+  postsList = new Array<Post>();
 
   constructor(
     private blog: Blog,
@@ -47,6 +51,7 @@ export class PostsComponent implements OnInit, OnDestroy {
     );
     this.postsService.posts$
       .subscribe(post => {
+        this.postsList.push(post);
         console.log(post);
       });
   }
