@@ -29,7 +29,10 @@ export class PostComponent {
   ) {}
 
   async addPost(event: Post) {
-    await this.postsService.addPost(event);
+    await this.postsService.addPost(event)
+      .subscribe(
+        next => next,
+        err => console.log(err.message));
     this.backToBlog();
   }
 
