@@ -44,7 +44,7 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.postsService.getPostInfo().subscribe(
-      res => this.error = '',
+      () => this.error = '',
       err => this.error = err.statusText
     );
   }

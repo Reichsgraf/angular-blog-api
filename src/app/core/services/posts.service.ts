@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, Subject } from 'rxjs';
-import { pluck, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 import { Blog } from 'blog';
 import { Post } from '../../shared/models/post.interface';
@@ -17,8 +16,7 @@ export class PostsService {
 
   constructor(
     private blog: Blog,
-    private http: HttpClient,
-    private authService: AuthService
+    private http: HttpClient
   ) {}
 
   getPostInfo() {
