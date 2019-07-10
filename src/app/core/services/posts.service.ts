@@ -65,9 +65,14 @@ export class PostsService {
     return this.http.post('http://localhost:3000/api/posts', body);
   }
 
-  removePost(id: string) {
-    return console.log('Delete?..');
-    // http.post
+  updatePost(key: string, post: Post) {
+    // not tested
+    return this.http.put(`http://localhost:3000/api/posts/${ key }`, post);
+  }
+
+  removePost(key: string) {
+    // not tested
+    return this.http.delete(`http://localhost:3000/api/posts/${ key }`);
   }
 
 }
