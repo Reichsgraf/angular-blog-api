@@ -61,16 +61,44 @@ import { Post } from '../../../shared/models/post.interface';
         <div class="post-form__submit">
           <div>
             <button
+              *ngIf="!exists"
               type="button"
               class="button"
               (click)="createPost()">
               Create post
+            </button>
+            <button
+              *ngIf="exists"
+              type="button"
+              class="button"
+              (click)="updatePost()">
+              Update post
             </button>
             <a
               class="button button--cancel"
               [routerLink]="['../']">
               Cancel
             </a>
+          </div>
+          <div class="post-form__delete" *ngIf="exists">
+            <div *ngIf="toggled">
+              <p>Delete item?</p>
+              <button
+                class="confirm"
+                type="button"
+                (click)="removePost()">
+                Yes
+              </button>
+              <button
+                class="cancel"
+                type="button"
+                (click)="toggle()">
+                No
+              </button>
+            </div>
+            <button class="button button--delete" type="button" (click)="toggle()">
+              Delete
+            </button>
           </div>
         </div>
       </form>
@@ -79,11 +107,20 @@ import { Post } from '../../../shared/models/post.interface';
 })
 export class PostFormComponent implements OnChanges {
 
+  exists = false;
+  toggled = false;
+
   @Input()
   post: Post;
 
   @Output()
   create = new EventEmitter<Post>();
+
+  @Output()
+  update = new EventEmitter<Post>();
+
+  @Output()
+  remove = new EventEmitter<Post>();
 
   form = this.fb.group({
     title: ['', Validators.required],
@@ -95,6 +132,7 @@ export class PostFormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.post && this.post.title) {
+      this.exists = true;
       const value = this.post;
       this.form.patchValue(value);
     }
@@ -109,4 +147,19 @@ export class PostFormComponent implements OnChanges {
       this.create.emit(this.form.value);
     }
   }
+
+  updatePost() {
+    if (this.form.valid) {
+      this.update.emit(this.form.value);
+    }
+  }
+
+  removePost() {
+    this.remove.emit(this.form.value._id);
+  }
+
+  toggle() {
+    this.toggled = !this.toggled;
+  }
+
 }

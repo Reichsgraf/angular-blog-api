@@ -63,13 +63,13 @@ export class PostsService {
     return this.http.post('http://localhost:3000/api/posts', body);
   }
 
-  updatePost(key: string, post: Post) {
-    // not tested
-    return this.http.put(`http://localhost:3000/api/posts/${ key }`, post);
+  updatePost(post: Post) {
+    // TODO: not tested
+    return this.http.put(`http://localhost:3000/api/posts/${ post._id }`, post);
   }
 
   removePost(key: string) {
-    // not tested
+    // TODO: not tested
     return this.http.delete(`http://localhost:3000/api/posts/${ key }`);
   }
 
