@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Subject } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 import { Blog } from 'blog';
 import { Post } from '../../shared/models/post.interface';
@@ -19,20 +19,11 @@ export class PostsService {
     private http: HttpClient
   ) {}
 
-  getPostInfo() {
-    const request = this.http.get('http://localhost:3000/api/posts');
-    request
-      .subscribe(value => {
-        for (const item in value) {
-          if (value[item]) {
-            this.posts$.next(value[item]);
-          }
-        }
-      });
-    this.createPostsList();
-    return request;
+  getPosts(): Observable<Array<Post>> {
+    return this.http.get<Array<Post>>('http://localhost:3000/api/posts');
   }
 
+  // TODO: Get Post with API
   getPost(key: string) {
     if (!key) {
       return {} as Post;

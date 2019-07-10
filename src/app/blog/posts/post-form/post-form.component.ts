@@ -155,7 +155,7 @@ export class PostFormComponent implements OnChanges {
   }
 
   removePost() {
-    this.remove.emit(this.form.value._id);
+    this.remove.emit(this.form.value);
   }
 
   toggle() {

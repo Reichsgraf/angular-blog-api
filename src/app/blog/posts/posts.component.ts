@@ -1,10 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { Blog } from 'blog';
 import { Post } from '../../shared/models/post.interface';
-import { PostsService } from '../../core/services/posts.service';
-import {Observable, Subject} from 'rxjs';
 
 @Component({
   selector: 'posts',
@@ -20,7 +18,7 @@ import {Observable, Subject} from 'rxjs';
           Create
         </a>
       </div>
-      <div *ngIf="this.postsService.postsList as posts">
+      <div>
         <div class="message" *ngIf="error || !posts.length">
           {{ error }}
         </div>
@@ -35,18 +33,16 @@ import {Observable, Subject} from 'rxjs';
 export class PostsComponent implements OnInit, OnDestroy {
 
   error = 'Empty list, add some post';
+  posts: Array<Post>;
 
   constructor(
     private blog: Blog,
     private router: Router,
-    private postsService: PostsService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.postsService.getPostInfo().subscribe(
-      () => this.error = '',
-      err => this.error = err.statusText
-    );
+    this.posts = this.route.snapshot.data.posts || [];
   }
 
   ngOnDestroy() {}

@@ -12,9 +12,16 @@ import { PostFormComponent } from './post-form/post-form.component';
 // containers
 import { PostsComponent } from './posts.component';
 import { PostComponent } from './post/post.component';
+import {PostsResolver} from './resolvers/posts.resolver';
 
 export const ROUTES: Routes = [
-  { path: '', component: PostsComponent },
+  {
+    path: '',
+    component: PostsComponent,
+    resolve: {
+      posts: PostsResolver
+    }
+  },
   { path: 'new', component: PostComponent },
   { path: ':id', component: PostComponent }
 ];
@@ -30,6 +37,9 @@ export const ROUTES: Routes = [
     PostsComponent,
     PostComponent,
     PostFormComponent
+  ],
+  providers: [
+    PostsResolver
   ]
 })
 export class PostsModule {}
