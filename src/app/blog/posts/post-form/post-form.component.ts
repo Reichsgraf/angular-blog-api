@@ -1,7 +1,7 @@
 import {OnChanges, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Post } from '../../../app/shared/models/post.interface';
+import { Post } from '../../../shared/models/post.interface';
 
 @Component({
   selector: 'post-form',
@@ -95,8 +95,6 @@ export class PostFormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.post && this.post.title) {
-      //this.exists = true;
-
       const value = this.post;
       this.form.patchValue(value);
     }

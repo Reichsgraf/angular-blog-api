@@ -5,9 +5,9 @@ import { Observable, Subject } from 'rxjs';
 import { pluck, tap } from 'rxjs/operators';
 
 import { Blog } from 'blog';
-import { Post } from '../../../../app/shared/models/post.interface';
+import { Post } from '../../shared/models/post.interface';
 
-import { AuthService } from '../../../../app/core/services/auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class PostsService {
@@ -39,8 +39,6 @@ export class PostsService {
     if (!key) {
       return {} as Post;
     }
-    console.log(this.postsList
-      .find(item => item._id === key));
     return this.postsList
       .find(item => item._id === key);
   }
@@ -57,7 +55,6 @@ export class PostsService {
   }
 
   addPost(post: Post) {
-    console.log('Sending post:', post);
     const body = {
       title: post.title,
       author: post.author,

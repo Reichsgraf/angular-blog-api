@@ -1,11 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { Observable } from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
-import { Post } from '../../../app/shared/models/post.interface';
-import { PostsService } from '../../shared/services/posts/posts.service';
+import {Post} from '../../../shared/models/post.interface';
+import {PostsService} from '../../../core/services/posts.service';
 
 @Component({
   selector: 'post',

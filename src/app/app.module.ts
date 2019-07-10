@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './core/services/interceptors/api.interceptor';
+import { TokenInterceptor } from './core/interceptors/api.interceptor';
 
 // @ts-ignore
 import { Blog } from 'blog';
 
 // feature models
 import { AuthModule } from './core/authentication/auth.module';
-import { BlogModule } from '../blog/blog.module';
+import { BlogModule } from './blog/blog.module';
 
 // containers
 import { AppComponent } from './app.component';

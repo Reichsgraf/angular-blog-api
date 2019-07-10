@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Blog } from 'blog';
-import { Post } from '../../app/shared/models/post.interface';
-import { PostsService } from '../shared/services/posts/posts.service';
+import { Post } from '../../shared/models/post.interface';
+import { PostsService } from '../../core/services/posts.service';
 import {Observable, Subject} from 'rxjs';
 
 @Component({

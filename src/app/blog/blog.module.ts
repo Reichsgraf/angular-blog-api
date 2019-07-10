@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // shared models
-import { SharedModule } from './shared/shared.module';
+import { SharedListModule } from '../shared/modules/shared.list.module';
 
 // guards
-import { AuthGuard } from '../app/shared/guards/auth.guard';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 export const ROUTES: Routes = [
   { path: 'blog', canActivate: [AuthGuard], loadChildren: './posts/posts.module#PostsModule' }
@@ -14,7 +14,7 @@ export const ROUTES: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(ROUTES),
-    SharedModule.forRoot()
+    SharedListModule.forRoot()
   ]
 })
 export class BlogModule {}

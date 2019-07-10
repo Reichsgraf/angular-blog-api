@@ -29,4 +29,5 @@ export class AppHeaderComponent {
   logoutUser() {
     this.logout.emit();
   }
+
 }

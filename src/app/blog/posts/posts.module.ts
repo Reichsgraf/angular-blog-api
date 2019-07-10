@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { Post } from '../../app/shared/models/post.interface';
+import { Post } from '../../shared/models/post.interface';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedListModule } from '../../shared/modules/shared.list.module';
 
 // components
 import { PostFormComponent } from './post-form/post-form.component';
@@ -24,7 +24,7 @@ export const ROUTES: Routes = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(ROUTES),
-    SharedModule.forRoot()
+    SharedListModule.forRoot()
   ],
   declarations: [
     PostsComponent,

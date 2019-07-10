@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // components
-import { AuthFormComponent } from '../core/authentication/auth-form.component';
+import { AuthFormComponent } from '../../core/authentication/auth-form.component';
 
 // services
-import { AuthService } from '../core/services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 // guards
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from '../../core/guards/auth.guard';
 
 @NgModule({
   imports: [
