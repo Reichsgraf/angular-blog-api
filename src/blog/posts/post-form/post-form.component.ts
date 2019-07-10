@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import {OnChanges, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Post } from '../../../app/shared/models/post.interface';
@@ -77,7 +77,10 @@ import { Post } from '../../../app/shared/models/post.interface';
     </div>
   `
 })
-export class PostFormComponent {
+export class PostFormComponent implements OnChanges {
+
+  @Input()
+  post: Post;
 
   @Output()
   create = new EventEmitter<Post>();
@@ -89,6 +92,15 @@ export class PostFormComponent {
     image: ['', Validators.required],
     description: ['', Validators.required],
   });
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.post && this.post.title) {
+      //this.exists = true;
+
+      const value = this.post;
+      this.form.patchValue(value);
+    }
+  }
 
   constructor(
     private fb: FormBuilder

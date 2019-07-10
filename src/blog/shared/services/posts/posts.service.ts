@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, Subject } from 'rxjs';
-import {catchError, pluck, tap} from 'rxjs/operators';
+import { pluck, tap } from 'rxjs/operators';
 
 import { Blog } from 'blog';
 import { Post } from '../../../../app/shared/models/post.interface';
@@ -13,6 +13,7 @@ import { AuthService } from '../../../../app/core/services/auth.service';
 export class PostsService {
 
   posts$ = new Subject<Post>();
+  postsList = new Array<Post>();
 
   constructor(
     private blog: Blog,
@@ -20,7 +21,6 @@ export class PostsService {
     private authService: AuthService
   ) {}
 
-  // TODO: it's time to some change
   getPostInfo() {
     const request = this.http.get('http://localhost:3000/api/posts');
     request
@@ -31,16 +31,29 @@ export class PostsService {
           }
         }
       });
+    this.createPostsList();
     return request;
   }
 
+  getPost(key: string) {
+    if (!key) {
+      return {} as Post;
+    }
+    console.log(this.postsList
+      .find(item => item._id === key));
+    return this.postsList
+      .find(item => item._id === key);
+  }
+
   createPostsList() {
-    const postsList = new Array<Post>();
+    // FIXME: this is barbaric, all of this and if -- more then others
     this.posts$
       .subscribe(post => {
-        postsList.push(post);
+        if (!this.postsList.find(item => item._id === post._id)) {
+          this.postsList.push(post);
+        }
       });
-    return postsList;
+    return this.postsList;
   }
 
   addPost(post: Post) {

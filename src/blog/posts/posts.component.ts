@@ -20,8 +20,8 @@ import {Observable, Subject} from 'rxjs';
           Create
         </a>
       </div>
-      <div *ngIf="postsList as posts">
-        <div class="message" *ngIf="error">
+      <div *ngIf="this.postsService.postsList as posts">
+        <div class="message" *ngIf="error || !posts.length">
           {{ error }}
         </div>
         <list-item
@@ -34,8 +34,7 @@ import {Observable, Subject} from 'rxjs';
 })
 export class PostsComponent implements OnInit, OnDestroy {
 
-  error: string;
-  postsList = new Array<Post>();
+  error = 'Empty list, add some post';
 
   constructor(
     private blog: Blog,
@@ -45,17 +44,11 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.postsService.getPostInfo().subscribe(
-      res => {
-        this.error = '';
-      },
+      res => this.error = '',
       err => this.error = err.statusText
     );
-    this.postsList = this.postsService.createPostsList();
-    console.log(this.postsList);
   }
 
-  ngOnDestroy() {
-    // this.postsService.posts$.unsubscribe();
-  }
+  ngOnDestroy() {}
 
 }
