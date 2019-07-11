@@ -1,25 +1,21 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'post-dialog',
+  styleUrls: ['post-dialog.component.css'],
   template: `
-    <h1 mat-dialog-title>Hi</h1>
-    <div mat-dialog-content>
-      <p>What's your favorite animal?</p>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button (click)="onNoClick()">No Thanks</button>
-      <button mat-button>Ok</button>
-    </div>
+    <h2 mat-dialog-title>Delete all</h2>
+    <mat-dialog-content>Are you sure?</mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>No</button>
+      <button mat-button [mat-dialog-close]="true">Yes</button>
+    </mat-dialog-actions>
   `
 })
 export class PostDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<PostDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }

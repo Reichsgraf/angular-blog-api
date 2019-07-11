@@ -75,13 +75,9 @@ export class PostFormComponent implements OnChanges {
     this.toggled = !this.toggled;
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(PostDialogComponent, {
+  openDialog() {
+    this.dialog.open(PostDialogComponent, {
       width: '250px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 }

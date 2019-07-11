@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // feature models
 import { AuthModule } from '../core/authentication/auth.module';
@@ -19,7 +20,6 @@ import { AuthService } from '../core/authentication/services/auth.service';
 // interceptors
 import { TokenInterceptor } from '../core/interceptors/token.interceptor';
 import { ApiPrefixInterceptor } from '../core/interceptors/api-prefix.interceptor';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 // routes
 export const ROUTES: Routes = [
