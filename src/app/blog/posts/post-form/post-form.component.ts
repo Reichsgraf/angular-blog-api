@@ -7,119 +7,9 @@ import { Post } from '../../../shared/models/post.interface';
   selector: 'post-form',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['post-form.component.scss'],
-  template: `
-    <div class="post-form">
-      <form [formGroup]="form">
-        <div class="post-form__title" *ngIf="!exists || !toggleReadWrite">
-          <label>
-            <h3>
-              Post title
-            </h3>
-            <input
-              type="text"
-              formControlName="title">
-          </label>
-          <label>
-            <h3>
-              Post author
-            </h3>
-            <input
-              type="text"
-              formControlName="author">
-          </label>
-        </div>
-
-        <div class="post-form__content" *ngIf="!exists || !toggleReadWrite">
-          <label>
-            <h3>
-              Content
-            </h3>
-            <textarea
-              type="text"
-              rows="5"
-              formControlName="content"></textarea>
-          </label>
-          <label>
-            <h3>
-              Description
-            </h3>
-            <input
-              type="text"
-              formControlName="description">
-          </label>
-          <label>
-            <h3>
-              Image
-            </h3>
-            <input
-              type="text"
-              placeholder="e.g. https://goo.gl/img/1.jpg"
-              formControlName="image">
-          </label>
-        </div>
-
-        <div class="post-form__content" *ngIf="exists && toggleReadWrite">
-          <label>
-            <span>
-              <p><img src="{{ post.image }}"></p>
-              <p class="list-item__description">{{ post.content }}</p>
-            </span>
-          </label>
-        </div>
-
-        <div class="post-form__submit">
-          <div>
-            <button
-              *ngIf="!exists"
-              type="button"
-              class="button"
-              (click)="createPost()">
-              Create post
-            </button>
-            <button
-              *ngIf="exists && !toggleReadWrite"
-              type="button"
-              class="button"
-              (click)="updatePost()">
-              Update post
-            </button>
-            <a *ngIf="!exists"
-              class="button button--cancel"
-              [routerLink]="['../']">
-              Cancel
-            </a>
-            <a *ngIf="exists && toggleReadWrite"
-               class="button"
-               [routerLink]="['../']">
-              Cancel
-            </a>
-          </div>
-          <div class="post-form__delete" *ngIf="exists">
-            <div *ngIf="toggled">
-              <button
-                class="confirm"
-                type="button"
-                (click)="removePost()">
-                Yes
-              </button>
-              <button
-                class="cancel"
-                type="button"
-                (click)="toggle()">
-                No
-              </button>
-            </div>
-            <button class="button button--delete" type="button" (click)="toggle()">
-              Delete
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  `
+  templateUrl: 'post-form.component.html'
 })
 export class PostFormComponent implements OnChanges {
-  exists = false;
   toggled = false;
 
   @Input()
@@ -127,6 +17,9 @@ export class PostFormComponent implements OnChanges {
 
   @Input()
   toggleReadWrite: boolean;
+
+  @Input()
+  exists: boolean;
 
   @Output()
   create = new EventEmitter<Post>();

@@ -10,35 +10,12 @@ import {catchError, tap} from 'rxjs/operators';
 @Component({
   selector: 'post',
   styleUrls: ['post.component.scss'],
-  template: `
-    <div class="post">
-      <div class="post__title">
-        <h1>
-            {{ post.title ? toggleReadWrite ? '«' + post.title + '», ' + post.author
-            : 'Edit post' : 'Create post' }}
-        </h1>
-        <a
-          class="btn__upd"
-          (click)="toggle()">
-          <img src="/assets/img/check-active.svg">
-          {{ toggleReadWrite ? 'Update' : 'Read' }}
-        </a>
-      </div>
-      <div>
-        <post-form
-          [toggleReadWrite]="toggleReadWrite"
-          [post]="post"
-          (create)="addPost($event)"
-          (update)="updatePost($event)"
-          (remove)="removePost($event)">
-        </post-form>
-      </div>
-    </div>
-  `
+  templateUrl: 'post.component.html'
 })
 export class PostComponent implements OnInit, OnDestroy {
   post: Post;
   toggleReadWrite = true;
+  exists = false;
 
   constructor(
     private postsService: PostsService,
@@ -48,6 +25,9 @@ export class PostComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.post = this.route.snapshot.data.post || {};
+    if (this.post.title) {
+      this.exists = true;
+    }
   }
 
   ngOnDestroy() {

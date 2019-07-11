@@ -1,0 +1,24 @@
+<div class="post">
+  <div class="post__title">
+    <h1>
+      {{ post.title ? toggleReadWrite ? '«' + post.title + '», ' + post.author
+      : 'Edit post' : 'Create post' }}
+    </h1>
+    <a
+      class="btn__upd"
+      (click)="toggle()">
+      <img src="/assets/img/check-active.svg">
+      {{ exists ? toggleReadWrite ? 'Reading' : 'Updating' : 'Creating' }}
+    </a>
+  </div>
+  <div>
+    <post-form
+      [toggleReadWrite]="toggleReadWrite"
+      [exists]="exists"
+      [post]="post"
+      (create)="addPost($event)"
+      (update)="updatePost($event)"
+      (remove)="removePost($event)">
+    </post-form>
+  </div>
+</div>
