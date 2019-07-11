@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Blog } from 'blog';
-
 import { AuthService } from '../core/authentication/services/auth.service';
 
 @Component({
@@ -23,7 +21,6 @@ import { AuthService } from '../core/authentication/services/auth.service';
 export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
-    private blog: Blog,
     private router: Router,
     private authService: AuthService
   ) {}

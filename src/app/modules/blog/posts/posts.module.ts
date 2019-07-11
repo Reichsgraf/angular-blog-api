@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { MatButtonModule, MatDialogModule } from '@angular/material';
 
 import { Post } from '../../../shared/models/post.interface';
 
@@ -9,6 +10,7 @@ import { SharedListModule } from '../../../shared/modules/shared.list.module';
 
 // components
 import { PostFormComponent } from './post-form/post-form.component';
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
 
 // containers
 import { PostsComponent } from './posts.component';
@@ -26,12 +28,18 @@ import { POST_ROUTES } from '../routes/post.routes';
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(POST_ROUTES),
-    SharedListModule.forRoot()
+    SharedListModule.forRoot(),
+    MatDialogModule,
+    MatButtonModule,
   ],
   declarations: [
     PostsComponent,
     PostComponent,
-    PostFormComponent
+    PostFormComponent,
+    PostDialogComponent
+  ],
+  entryComponents: [
+    PostDialogComponent
   ],
   providers: [
     PostsResolver,

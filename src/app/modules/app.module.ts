@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { Blog } from 'blog';
-
 // feature models
 import { AuthModule } from '../core/authentication/auth.module';
 import { BlogModule } from './blog/blog.module';
@@ -21,6 +19,7 @@ import { AuthService } from '../core/authentication/services/auth.service';
 // interceptors
 import { TokenInterceptor } from '../core/interceptors/token.interceptor';
 import { ApiPrefixInterceptor } from '../core/interceptors/api-prefix.interceptor';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 // routes
 export const ROUTES: Routes = [
@@ -33,14 +32,15 @@ export const ROUTES: Routes = [
     RouterModule.forRoot(ROUTES),
     AuthModule,
     BlogModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ],
   declarations: [
     AppComponent,
     AppHeaderComponent
   ],
   providers: [
-    Blog,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,

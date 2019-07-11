@@ -1,7 +1,9 @@
-import {OnChanges, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
+import { OnChanges, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { Post } from '../../../../shared/models/post.interface';
+import { PostDialogComponent } from '../post-dialog/post-dialog.component';
 
 @Component({
   selector: 'post-form',
@@ -49,7 +51,8 @@ export class PostFormComponent implements OnChanges {
   }
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) {}
 
   createPost() {
@@ -72,4 +75,13 @@ export class PostFormComponent implements OnChanges {
     this.toggled = !this.toggled;
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PostDialogComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }
