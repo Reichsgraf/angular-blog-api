@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ListItemComponent } from '../components/list-item/list-item.component';
 
 // services
-import { PostsService } from '../../core/services/posts.service';
+import { PostsService } from '../../blog/posts/services/posts.service';
 
 @NgModule({
   imports: [

@@ -82,7 +82,6 @@ import { Post } from '../../../shared/models/post.interface';
           </div>
           <div class="post-form__delete" *ngIf="exists">
             <div *ngIf="toggled">
-              <p>Delete item?</p>
               <button
                 class="confirm"
                 type="button"

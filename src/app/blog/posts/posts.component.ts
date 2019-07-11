@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Blog } from 'blog';
 import { Post } from '../../shared/models/post.interface';
 
 @Component({
@@ -19,7 +18,7 @@ import { Post } from '../../shared/models/post.interface';
         </a>
       </div>
       <div>
-        <div class="message" *ngIf="error || !posts.length">
+        <div class="message" *ngIf="error">
           {{ error }}
         </div>
         <list-item
@@ -31,20 +30,20 @@ import { Post } from '../../shared/models/post.interface';
   `
 })
 export class PostsComponent implements OnInit, OnDestroy {
-
-  error = 'Empty list, add some post';
+  error = '';
   posts: Array<Post>;
 
   constructor(
-    private blog: Blog,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.posts = this.route.snapshot.data.posts || [];
+    if (!this.posts.length) {
+      this.error = 'Empty list, add some post';
+    }
   }
 
   ngOnDestroy() {}
-
 }

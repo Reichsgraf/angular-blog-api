@@ -5,8 +5,7 @@ import { pluck, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import 'rxjs/add/operator/do';
 
-import { Blog } from 'blog';
-import { User } from '../../shared/models/user.interface';
+import { User } from '../../../shared/models/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -14,10 +13,10 @@ export class AuthService {
   user$ = new Subject<User>();
 
   constructor(
-    private blog: Blog,
     private http: HttpClient
   ) {}
 
+  // replace to outer class
   private setToken(token: string): void {
     localStorage.setItem('token', token);
   }
@@ -27,16 +26,14 @@ export class AuthService {
   }
 
   // register
-  // FIXME: register and login are equivalent
   createUser(email: string, password: string) {
     const body = { email, password };
-    return this.http.post('http://localhost:3000/api/auth/login', body)
+    return this.http.post('/auth/register', body)
       .pipe(
         pluck('token'),
         tap((token: string) => {
           this.setToken(token);
           this.user$.next({email, token});
-          this.blog.set('user', this.user$);
         })
       );
   }
@@ -44,13 +41,12 @@ export class AuthService {
   // login
   loginUser(email: string, password: string) {
     const body = { email, password };
-    return this.http.post('http://localhost:3000/api/auth/login', body)
+    return this.http.post('/auth/login', body)
       .pipe(
         pluck('token'),
         tap((token: string) => {
           this.setToken(token);
           this.user$.next({ email, token });
-          this.blog.set('user', this.user$);
         })
       );
   }

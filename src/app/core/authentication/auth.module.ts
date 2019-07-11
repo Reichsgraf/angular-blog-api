@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 // shared models
 import { SharedAuthModule } from '../../shared/modules/shared.auth.module';
 
-
 export const ROUTES: Routes = [
   {
     path: 'auth',

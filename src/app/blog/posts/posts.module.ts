@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+
 import { Post } from '../../shared/models/post.interface';
 
 import { SharedListModule } from '../../shared/modules/shared.list.module';
@@ -12,25 +13,19 @@ import { PostFormComponent } from './post-form/post-form.component';
 // containers
 import { PostsComponent } from './posts.component';
 import { PostComponent } from './post/post.component';
-import {PostsResolver} from './resolvers/posts.resolver';
 
-export const ROUTES: Routes = [
-  {
-    path: '',
-    component: PostsComponent,
-    resolve: {
-      posts: PostsResolver
-    }
-  },
-  { path: 'new', component: PostComponent },
-  { path: ':id', component: PostComponent }
-];
+// resolvers
+import { PostsResolver } from './resolvers/posts.resolver';
+import { PostResolver } from './resolvers/post.resolver';
+
+// routes
+import { POST_ROUTES } from './routes/blog.routes';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(ROUTES),
+    RouterModule.forChild(POST_ROUTES),
     SharedListModule.forRoot()
   ],
   declarations: [
@@ -39,7 +34,8 @@ export const ROUTES: Routes = [
     PostFormComponent
   ],
   providers: [
-    PostsResolver
+    PostsResolver,
+    PostResolver
   ]
 })
 export class PostsModule {}

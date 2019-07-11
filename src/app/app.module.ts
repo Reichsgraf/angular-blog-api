@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './core/interceptors/api.interceptor';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
-// @ts-ignore
 import { Blog } from 'blog';
 
 // feature models
@@ -18,7 +17,8 @@ import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './core/app-header/app-header.component';
 
 // services
-import { AuthService } from './core/services/auth.service';
+import { AuthService } from './core/authentication/services/auth.service';
+import {ApiPrefixInterceptor} from './core/interceptors/api-prefix.interceptor';
 
 // routes
 export const ROUTES: Routes = [
@@ -39,9 +39,15 @@ export const ROUTES: Routes = [
   ],
   providers: [
     Blog,
-    AuthService, {
+    AuthService,
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiPrefixInterceptor,
       multi: true
     }
   ],
