@@ -1,0 +1,10 @@
+<div class="app-header">
+  <div class="wrapper">
+    <img src="/assets/favicon.ico">
+    <div
+      class="app-header__user-info"
+      *ngIf="authService.getToken()">
+      <span (click)="logoutUser()"></span>
+    </div>
+  </div>
+</div>

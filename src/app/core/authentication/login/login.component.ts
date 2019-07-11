@@ -7,18 +7,7 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'login',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-  <div>
-    <auth-form (submitted)="loginUser($event)">
-      <h1>Login</h1>
-      <a routerLink="/auth/register">Not registered?</a>
-      <button type="submit">Login</button>
-      <div class="error" *ngIf="error">
-        {{ error }}
-      </div>
-    </auth-form>
-  </div>
-  `
+  templateUrl: 'login.component.html'
 })
 export class LoginComponent {
   error: string;

@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
 
-import { Post } from '../../../shared/models/post.interface';
-import { PostsService } from '../services/posts.service';
+import { Post } from '../../../../shared/models/post.interface';
+import { PostsService } from '../../services/posts.service';
 import {catchError, tap} from 'rxjs/operators';
 
 @Component({

@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { Post } from '../../shared/models/post.interface';
+import { Post } from '../../../shared/models/post.interface';
 
-import { SharedListModule } from '../../shared/modules/shared.list.module';
+import { SharedListModule } from '../../../shared/modules/shared.list.module';
 
 // components
 import { PostFormComponent } from './post-form/post-form.component';
@@ -15,11 +15,11 @@ import { PostsComponent } from './posts.component';
 import { PostComponent } from './post/post.component';
 
 // resolvers
-import { PostsResolver } from './resolvers/posts.resolver';
-import { PostResolver } from './resolvers/post.resolver';
+import { PostsResolver } from '../resolvers/posts.resolver';
+import { PostResolver } from '../resolvers/post.resolver';
 
 // routes
-import { POST_ROUTES } from './routes/post.routes';
+import { POST_ROUTES } from '../routes/post.routes';
 
 @NgModule({
   imports: [

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // components
-import { AuthFormComponent } from '../../core/authentication/auth-form.component';
+import { AuthFormComponent } from '../../core/authentication/auth-form/auth-form.component';
 
 // services
 import { AuthService } from '../../core/authentication/services/auth.service';

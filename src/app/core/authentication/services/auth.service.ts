@@ -9,14 +9,13 @@ import { User } from '../../../shared/models/user.interface';
 
 @Injectable()
 export class AuthService {
-
   user$ = new Subject<User>();
 
   constructor(
     private http: HttpClient
   ) {}
 
-  // replace to outer class
+  // TODO: replace to outer class?
   private setToken(token: string): void {
     localStorage.setItem('token', token);
   }

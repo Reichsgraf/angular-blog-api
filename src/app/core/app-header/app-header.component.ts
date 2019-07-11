@@ -5,21 +5,9 @@ import { AuthService } from '../authentication/services/auth.service';
 @Component({
   selector: 'app-header',
   styleUrls: ['app-header.component.scss'],
-  template: `
-    <div class="app-header">
-      <div class="wrapper">
-        <img src="/assets/favicon.ico">
-        <div
-          class="app-header__user-info"
-          *ngIf="authService.getToken()">
-          <span (click)="logoutUser()"></span>
-        </div>
-      </div>
-    </div>
-  `
+  templateUrl: 'app-header.component.html'
 })
 export class AppHeaderComponent {
-
   @Input()
   authService: AuthService;
 
@@ -29,5 +17,4 @@ export class AppHeaderComponent {
   logoutUser() {
     this.logout.emit();
   }
-
 }
