@@ -10,7 +10,7 @@ import { Post } from '../../../shared/models/post.interface';
   template: `
     <div class="post-form">
       <form [formGroup]="form">
-        <div class="post-form__title">
+        <div class="post-form__title" *ngIf="!exists || !toggleReadWrite">
           <label>
             <h3>
               Post title
@@ -29,7 +29,7 @@ import { Post } from '../../../shared/models/post.interface';
           </label>
         </div>
 
-        <div class="post-form__content">
+        <div class="post-form__content" *ngIf="!exists || !toggleReadWrite">
           <label>
             <h3>
               Content
@@ -58,6 +58,15 @@ import { Post } from '../../../shared/models/post.interface';
           </label>
         </div>
 
+        <div class="post-form__content" *ngIf="exists && toggleReadWrite">
+          <label>
+            <span>
+              <p><img src="{{ post.image }}"></p>
+              <p class="list-item__description">{{ post.content }}</p>
+            </span>
+          </label>
+        </div>
+
         <div class="post-form__submit">
           <div>
             <button
@@ -68,15 +77,20 @@ import { Post } from '../../../shared/models/post.interface';
               Create post
             </button>
             <button
-              *ngIf="exists"
+              *ngIf="exists && !toggleReadWrite"
               type="button"
               class="button"
               (click)="updatePost()">
               Update post
             </button>
-            <a
+            <a *ngIf="!exists"
               class="button button--cancel"
               [routerLink]="['../']">
+              Cancel
+            </a>
+            <a *ngIf="exists && toggleReadWrite"
+               class="button"
+               [routerLink]="['../']">
               Cancel
             </a>
           </div>
@@ -105,12 +119,14 @@ import { Post } from '../../../shared/models/post.interface';
   `
 })
 export class PostFormComponent implements OnChanges {
-
   exists = false;
   toggled = false;
 
   @Input()
   post: Post;
+
+  @Input()
+  toggleReadWrite: boolean;
 
   @Output()
   create = new EventEmitter<Post>();
@@ -134,6 +150,8 @@ export class PostFormComponent implements OnChanges {
       this.exists = true;
       const value = this.post;
       this.form.patchValue(value);
+    } else {
+      this.toggleReadWrite = false;
     }
   }
 

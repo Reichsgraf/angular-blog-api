@@ -21,7 +21,6 @@ import { AuthService } from '../services/auth.service';
   `
 })
 export class LoginComponent {
-
   error: string;
 
   constructor(
@@ -29,7 +28,7 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  async loginUser(event: FormGroup) {
+  loginUser(event: FormGroup) {
     const { email, password } = event.value;
     this.authService.loginUser(email, password)
       .subscribe(

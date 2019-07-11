@@ -28,7 +28,8 @@ export class SharedAuthModule {
     return {
       ngModule: SharedAuthModule,
       providers: [
-        AuthService, AuthGuard
+        AuthService,
+        AuthGuard
       ]
     };
   }

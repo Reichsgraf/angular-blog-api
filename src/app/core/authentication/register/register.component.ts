@@ -21,7 +21,6 @@ import { AuthService } from '../services/auth.service';
   `
 })
 export class RegisterComponent {
-
   error: string;
 
   constructor(
@@ -29,7 +28,7 @@ export class RegisterComponent {
     private router: Router
   ) {}
 
-  async registerUser(event: FormGroup) {
+  registerUser(event: FormGroup) {
     const { email, password } = event.value;
     this.authService.createUser(email, password)
       .subscribe(

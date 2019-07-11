@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
@@ -14,13 +14,19 @@ import {catchError, tap} from 'rxjs/operators';
     <div class="post">
       <div class="post__title">
         <h1>
-          <span>
-            {{ post.title ? 'Edit' : 'Create' }} post
-          </span>
+            {{ post.title ? toggleReadWrite ? '«' + post.title + '», ' + post.author
+            : 'Edit post' : 'Create post' }}
         </h1>
+        <a
+          class="btn__upd"
+          (click)="toggle()">
+          <img src="/assets/img/check-active.svg">
+          {{ toggleReadWrite ? 'Update' : 'Read' }}
+        </a>
       </div>
       <div>
         <post-form
+          [toggleReadWrite]="toggleReadWrite"
           [post]="post"
           (create)="addPost($event)"
           (update)="updatePost($event)"
@@ -31,8 +37,8 @@ import {catchError, tap} from 'rxjs/operators';
   `
 })
 export class PostComponent implements OnInit, OnDestroy {
-
   post: Post;
+  toggleReadWrite = true;
 
   constructor(
     private postsService: PostsService,
@@ -90,4 +96,7 @@ export class PostComponent implements OnInit, OnDestroy {
     this.router.navigate(['blog']);
   }
 
+  toggle() {
+    this.toggleReadWrite = !this.toggleReadWrite;
+  }
 }

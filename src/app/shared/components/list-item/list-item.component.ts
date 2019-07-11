@@ -6,7 +6,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   styleUrls: ['list-item.component.scss'],
   template: `
     <div class="list-item">
-      <!--{{ item | json }}-->
       <a [routerLink]="getRoute(item)">
         <p class="list-item__title">
           {{ item.title }}, {{ item.author }}

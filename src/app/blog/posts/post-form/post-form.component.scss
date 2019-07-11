@@ -38,6 +38,8 @@
     border-bottom: 1px solid #d1deeb;
   }
   &__content {
+    display:block;
+    overflow:auto;
     padding: 30px;
     border-bottom: 1px solid #d1deeb;
   }
@@ -128,6 +130,18 @@
   }
   textarea {
     resize: none;
+  }
+  p {
+    text-align: justify;
+    margin: 0;
+    img {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      margin: 0 10px 0 0;
+      width: 40%;
+      float: left;
+    }
   }
   .button {
     cursor: pointer;

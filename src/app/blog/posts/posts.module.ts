@@ -19,7 +19,7 @@ import { PostsResolver } from './resolvers/posts.resolver';
 import { PostResolver } from './resolvers/post.resolver';
 
 // routes
-import { POST_ROUTES } from './routes/blog.routes';
+import { POST_ROUTES } from './routes/post.routes';
 
 @NgModule({
   imports: [
