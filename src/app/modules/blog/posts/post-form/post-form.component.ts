@@ -12,16 +12,11 @@ import { PostDialogComponent } from '../post-dialog/post-dialog.component';
   templateUrl: 'post-form.component.html'
 })
 export class PostFormComponent implements OnChanges {
-  toggled = false;
-
   @Input()
   post: Post;
 
   @Input()
   toggleReadWrite: boolean;
-
-  @Input()
-  exists: boolean;
 
   @Output()
   create = new EventEmitter<Post>();
@@ -42,7 +37,6 @@ export class PostFormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.post && this.post.title) {
-      this.exists = true;
       const value = this.post;
       this.form.patchValue(value);
     } else {
@@ -71,13 +65,14 @@ export class PostFormComponent implements OnChanges {
     this.remove.emit(this.form.value);
   }
 
-  toggle() {
-    this.toggled = !this.toggled;
-  }
+  openDialog(): void {
+    const dialogRef = this.dialog
+      .open(PostDialogComponent, { width: '250px' });
 
-  openDialog() {
-    this.dialog.open(PostDialogComponent, {
-      width: '250px',
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.removePost();
+      }
     });
   }
 }

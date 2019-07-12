@@ -15,7 +15,6 @@ import {catchError, tap} from 'rxjs/operators';
 export class PostComponent implements OnInit, OnDestroy {
   post: Post;
   toggleReadWrite = true;
-  exists = false;
 
   constructor(
     private postsService: PostsService,
@@ -25,9 +24,6 @@ export class PostComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.post = this.route.snapshot.data.post || {};
-    if (this.post.title) {
-      this.exists = true;
-    }
   }
 
   ngOnDestroy() {

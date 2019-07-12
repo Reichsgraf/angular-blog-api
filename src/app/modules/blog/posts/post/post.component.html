@@ -8,13 +8,12 @@
       class="btn__upd"
       (click)="toggle()">
       <img src="/assets/img/check-active.svg">
-      {{ exists ? toggleReadWrite ? 'Reading' : 'Updating' : 'Creating' }}
+      {{ post.title ? toggleReadWrite ? 'Reading' : 'Updating' : 'Creating' }}
     </a>
   </div>
   <div>
     <post-form
       [toggleReadWrite]="toggleReadWrite"
-      [exists]="exists"
       [post]="post"
       (create)="addPost($event)"
       (update)="updatePost($event)"

@@ -2,15 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule, MatDialogModule } from '@angular/material';
-
-import { Post } from '../../../shared/models/post.interface';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatButtonModule, MatDialogModule} from '@angular/material';
 
 import { SharedListModule } from '../../../shared/modules/shared.list.module';
 
 // components
 import { PostFormComponent } from './post-form/post-form.component';
-import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import { PostFormReadComponent } from './post-form/post-form-read/post-form-read.component';
 
 // containers
 import { PostsComponent } from './posts.component';
@@ -22,6 +20,8 @@ import { PostResolver } from '../resolvers/post.resolver';
 
 // routes
 import { POST_ROUTES } from '../routes/post.routes';
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import {PostFormChangeComponent} from './post-form/post-form-change/post-form-change.component';
 
 @NgModule({
   imports: [
@@ -30,12 +30,14 @@ import { POST_ROUTES } from '../routes/post.routes';
     RouterModule.forChild(POST_ROUTES),
     SharedListModule.forRoot(),
     MatDialogModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   declarations: [
     PostsComponent,
     PostComponent,
     PostFormComponent,
+    PostFormReadComponent,
+    PostFormChangeComponent,
     PostDialogComponent
   ],
   entryComponents: [
