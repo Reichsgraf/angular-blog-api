@@ -1,3 +1,7 @@
+<div class="post">
+  <div class="post__title">
+    <ng-content select="h1"></ng-content>
+  </div>
     <div class="post-form">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="post-form__content">
@@ -41,22 +45,15 @@
           <div class="post-form__submit">
             <div>
               <ng-content></ng-content>
-              <a
-                class="button button--cancel"
+            </div>
+            <div>
+              <button
                 [routerLink]="['../']">
                 Cancel
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </form>
     </div>
-
-<!--
-  <button
-    *ngIf="post.title"
-    type="button"
-    class="button"
-    (click)="updatePost()">
-    Update post
-  </button>-->
+</div>

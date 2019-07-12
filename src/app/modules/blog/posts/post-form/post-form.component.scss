@@ -1,36 +1,30 @@
-%button {
-  outline: 0;
-  cursor: pointer;
-  border: 0;
-  background: transparent;
+:host ::ng-deep {
+  display: block;
+  margin: 50px 0;
 }
-.confirm,
-.cancel {
-  @extend %button;
-  padding: 5px 10px;
-  margin: 0 0 0 5px;
-  font-size: 14px;
-}
-.error {
-  color: #a94442;
-  background: #f2dede;
-  border: 1px solid #e4b3b3;
-  border-radius: 2px;
-  padding: 8px;
-  font-size: 14px;
-  font-weight: 400;
-  margin: 10px 0 0;
-}
-.confirm {
-  color: #fff;
-  background: #d73a49;
+.post {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 3px 4px rgba(0,0,0,.1);
+  border: 1px solid #c1cedb;
   border-radius: 3px;
-  transition: all .2s ease-in-out;
-  &:hover {
-    background: darken(#d73a49, 3%);
+  overflow: hidden;
+  h1 {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    background: #f6fafd;
+    border-bottom: 1px solid #c1cedb;
   }
 }
-
 .post-form {
   &__title {
     padding: 30px;
@@ -49,38 +43,6 @@
     h3 {
       margin: 20px 0;
       flex-grow: 1;
-    }
-  }
-  &__delete {
-    display: flex;
-    align-items: center;
-    > div {
-      display: flex;
-      align-items: center;
-      p {
-        margin: 0;
-      }
-    }
-    .cancel {
-      margin: 0 20px 0 0;
-    }
-  }
-  &__add {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    background: #97c747;
-    border-radius: 50px;
-    padding: 6px 20px 6px 15px;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 13px;
-    img {
-      width: 20px;
-      margin: 0 6px 0 0;
     }
   }
   &__submit {
@@ -143,7 +105,7 @@
       float: left;
     }
   }
-  .button {
+  ::ng-deep button {
     cursor: pointer;
     outline: 0;
     border: 0;
@@ -158,23 +120,12 @@
     &:hover {
       background: darken(#39a1e7, 5%);
     }
-    &:disabled {
-      opacity: .4;
-      cursor: not-allowed;
-    }
-    &--cancel {
+  }
+  button {
+    background: #fff;
+    color: #545e6f;
+    &:hover {
       background: #fff;
-      color: #545e6f;
-      &:hover {
-        background: #fff;
-      }
-    }
-    &--delete {
-      background: #d73a49;
-      align-self: flex-start;
-      &:hover {
-        background: darken(#d73a49, 5%);
-      }
     }
   }
 }

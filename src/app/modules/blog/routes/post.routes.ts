@@ -4,6 +4,8 @@ import { PostsResolver } from '../resolvers/posts.resolver';
 import { PostComponent } from '../posts/post/post.component';
 import { PostResolver } from '../resolvers/post.resolver';
 import { PostFormCreateComponent } from '../posts/post-form-create/post-form-create.component';
+import { PostFormChangeComponent } from '../posts/post-form-change/post-form-change.component';
+
 
 export const POST_ROUTES: Routes = [
   {
@@ -22,6 +24,10 @@ export const POST_ROUTES: Routes = [
     component: PostComponent,
     resolve: {
       post: PostResolver,
-    }
+    },
+    /*chieldren: [
+      { path: '', component: PostComponent },
+      { path: 'update', component: PostFormChangeComponent }
+    ]*/
   }
 ];

@@ -46,16 +46,4 @@ export class PostFormComponent implements OnChanges {
       this.submitted.emit(this.form);
     }
   }
-
-  createPost() {
-    if (this.form.valid) {
-      this.create.emit(this.form.value);
-    }
-  }
-
-  updatePost() {
-    if (this.form.valid) {
-      this.update.emit(this.form.value);
-    }
-  }
 }

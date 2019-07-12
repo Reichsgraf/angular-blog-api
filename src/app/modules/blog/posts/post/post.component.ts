@@ -31,19 +31,6 @@ export class PostComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
-  updatePost(event: Post) {
-    const id = this.route.snapshot.params.id;
-    return this.postsService.updatePost(id, event)
-      .pipe(
-        tap(() => this.backToBlog()),
-        catchError(err => {
-          console.log(err);
-          return err;
-        })
-      )
-      .subscribe();
-  }
-
   removePost() {
     const id = this.route.snapshot.params.id;
     return this.postsService.removePost(id)

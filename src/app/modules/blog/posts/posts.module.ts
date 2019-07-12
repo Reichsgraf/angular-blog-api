@@ -8,6 +8,8 @@ import { SharedListModule } from '../../../shared/modules/shared.list.module';
 
 // components
 import { PostFormComponent } from './post-form/post-form.component';
+import { PostFormCreateComponent } from './post-form-create/post-form-create.component';
+import { PostFormChangeComponent } from './post-form-change/post-form-change.component';
 
 // containers
 import { PostsComponent } from './posts.component';
@@ -20,7 +22,6 @@ import { PostResolver } from '../resolvers/post.resolver';
 // routes
 import { POST_ROUTES } from '../routes/post.routes';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
-import {PostFormCreateComponent} from './post-form-create/post-form-create.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import {PostFormCreateComponent} from './post-form-create/post-form-create.compo
     PostComponent,
     PostFormComponent,
     PostDialogComponent,
-    PostFormCreateComponent
+    PostFormCreateComponent,
+    PostFormChangeComponent
   ],
   entryComponents: [
     PostDialogComponent
