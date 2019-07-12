@@ -65,7 +65,7 @@ export class PostFormComponent implements OnChanges {
     this.remove.emit(this.form.value);
   }
 
-  openDialog(): void {
+  private openDialog(): void {
     const dialogRef = this.dialog
       .open(PostDialogComponent, { width: '250px' });
 
