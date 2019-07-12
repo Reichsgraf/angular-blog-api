@@ -1,11 +1,13 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
+import { catchError, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/switchMap';
 
 import { Post } from '../../../../shared/models/post.interface';
 import { PostsService } from '../../services/posts.service';
-import {catchError, tap} from 'rxjs/operators';
+import { PostDialogComponent } from '../post-dialog/post-dialog.component';
 
 @Component({
   selector: 'post',
@@ -19,28 +21,15 @@ export class PostComponent implements OnInit, OnDestroy {
   constructor(
     private postsService: PostsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.post = this.route.snapshot.data.post || {};
   }
 
-  ngOnDestroy() {
-
-  }
-
-  addPost(event: Post) {
-    return this.postsService.addPost(event)
-      .pipe(
-        tap(() => this.backToBlog()),
-        catchError(err => {
-          console.log(err);
-          return err;
-        })
-      )
-      .subscribe();
-  }
+  ngOnDestroy() {}
 
   updatePost(event: Post) {
     const id = this.route.snapshot.params.id;
@@ -55,7 +44,7 @@ export class PostComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  removePost(event: Post) {
+  removePost() {
     const id = this.route.snapshot.params.id;
     return this.postsService.removePost(id)
       .pipe(
@@ -74,5 +63,16 @@ export class PostComponent implements OnInit, OnDestroy {
 
   toggle() {
     this.toggleReadWrite = !this.toggleReadWrite;
+  }
+
+  private openDialog(): void {
+    const dialogRef = this.dialog
+      .open(PostDialogComponent, { width: '250px' });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.removePost();
+      }
+    });
   }
 }

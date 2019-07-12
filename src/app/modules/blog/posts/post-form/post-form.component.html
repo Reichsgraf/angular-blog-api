@@ -1,29 +1,5 @@
-  <ng-template [ngIf]="toggleReadWrite">
     <div class="post-form">
-      <div class="post-form__content">
-        <label>
-          <span>
-            <p><img src="{{ post.image }}"></p>
-            <p class="list-item__description">{{ post.content }}</p>
-          </span>
-        </label>
-      </div>
-      <div class="post-form__submit">
-        <div>
-          <a
-            class="button"
-            [routerLink]="['../']">
-            Back
-          </a>
-        </div>
-        <ng-content *ngTemplateOutlet="delete"></ng-content>
-      </div>
-    </div>
-  </ng-template>
-
-  <ng-template [ngIf]="!toggleReadWrite">
-    <div class="post-form">
-      <form [formGroup]="form">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="post-form__content">
           <div class="post-form__title">
             <label>
@@ -62,43 +38,25 @@
                 formControlName="image">
             </label>
           </div>
-
           <div class="post-form__submit">
             <div>
-              <button
-                *ngIf="!post.title"
-                type="button"
-                class="button"
-                (click)="createPost()">
-                Create post
-              </button>
-              <button
-                *ngIf="post.title"
-                type="button"
-                class="button"
-                (click)="updatePost()">
-                Update post
-              </button>
+              <ng-content></ng-content>
               <a
                 class="button button--cancel"
                 [routerLink]="['../']">
                 Cancel
               </a>
             </div>
-            <ng-content *ngTemplateOutlet="delete"></ng-content>
           </div>
         </div>
       </form>
     </div>
-  </ng-template>
 
-  <ng-template #delete>
-    <div class="post-form__delete" *ngIf="post.title">
-      <button
-        class="button button--delete"
-        type="button"
-        (click)="openDialog()">
-        Delete
-      </button>
-    </div>
-  </ng-template>
+<!--
+  <button
+    *ngIf="post.title"
+    type="button"
+    class="button"
+    (click)="updatePost()">
+    Update post
+  </button>-->

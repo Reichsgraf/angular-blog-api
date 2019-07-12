@@ -20,6 +20,7 @@ import { PostResolver } from '../resolvers/post.resolver';
 // routes
 import { POST_ROUTES } from '../routes/post.routes';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import {PostFormCreateComponent} from './post-form-create/post-form-create.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
     PostsComponent,
     PostComponent,
     PostFormComponent,
-    PostDialogComponent
+    PostDialogComponent,
+    PostFormCreateComponent
   ],
   entryComponents: [
     PostDialogComponent

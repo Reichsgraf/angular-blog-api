@@ -3,6 +3,7 @@ import { PostsComponent } from '../posts/posts.component';
 import { PostsResolver } from '../resolvers/posts.resolver';
 import { PostComponent } from '../posts/post/post.component';
 import { PostResolver } from '../resolvers/post.resolver';
+import { PostFormCreateComponent } from '../posts/post-form-create/post-form-create.component';
 
 export const POST_ROUTES: Routes = [
   {
@@ -14,7 +15,7 @@ export const POST_ROUTES: Routes = [
   },
   {
     path: 'new',
-    component: PostComponent,
+    component: PostFormCreateComponent,
   },
   {
     path: ':id',
