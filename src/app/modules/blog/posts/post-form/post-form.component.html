@@ -1,59 +1,62 @@
 <div class="post">
+
   <div class="post__title">
     <ng-content select="h1"></ng-content>
   </div>
-    <div class="post-form">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="post-form__content">
-          <div class="post-form__title">
-            <label>
-              <h3>Post title</h3>
-              <input
-                type="text"
-                formControlName="title">
-            </label>
-            <label>
-              <h3>Post author</h3>
-              <input
-                type="text"
-                formControlName="author">
-            </label>
-          </div>
 
-          <div class="post-form__content">
-            <label>
-              <h3>Content</h3>
-              <textarea
-                type="text"
-                rows="5"
-                formControlName="content"></textarea>
-            </label>
-            <label>
-              <h3>Description</h3>
-              <input
-                type="text"
-                formControlName="description">
-            </label>
-            <label>
-              <h3>Image</h3>
-              <input
-                type="text"
-                placeholder="e.g. https://goo.gl/img/1.jpg"
-                formControlName="image">
-            </label>
-          </div>
-          <div class="post-form__submit">
-            <div>
-              <ng-content></ng-content>
-            </div>
-            <div>
-              <button
-                [routerLink]="['../']">
-                Cancel
-              </button>
-            </div>
-          </div>
+  <div class="post-form">
+    <div class="post-form__content">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="post-form__subcontent">
+        <label>
+          <h3>Post title</h3>
+          <input
+            type="text"
+            formControlName="title">
+        </label>
+        <label>
+          <h3>Post author</h3>
+          <input
+            type="text"
+            formControlName="author">
+        </label>
+      </div>
+
+      <div class="post-form__subcontent">
+        <label>
+          <h3>Content</h3>
+          <textarea
+            type="text"
+            rows="5"
+            formControlName="content"></textarea>
+        </label>
+        <label>
+          <h3>Description</h3>
+          <input
+            type="text"
+            formControlName="description">
+        </label>
+        <label>
+          <h3>Image</h3>
+          <input
+            type="text"
+            placeholder="e.g. https://goo.gl/img/1.jpg"
+            formControlName="image">
+        </label>
+      </div>
+      <div class="post-form__submit">
+        <ng-content></ng-content>
+        <div>
+          <button
+            [routerLink]="['../']">
+            Cancel
+          </button>
         </div>
-      </form>
+      </div>
+
+    </form>
     </div>
+  </div>
+
 </div>
