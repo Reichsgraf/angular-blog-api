@@ -1,9 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import {Post} from '../../../../shared/models/post.interface';
-import {ActivatedRoute} from '@angular/router';
-import {PostsService} from '../../services/posts.service';
+import { Post } from '../../../../shared/models/post.interface';
 
 @Component({
   selector: 'post-form',
@@ -49,5 +47,3 @@ export class PostFormComponent implements OnChanges {
     }
   }
 }
-
-// TODO: почистить scss

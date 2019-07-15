@@ -21,12 +21,12 @@ export const POST_ROUTES: Routes = [
   },
   {
     path: ':id',
-    component: PostComponent,
     resolve: {
       post: PostResolver,
-    }
+    },
+    children: [
+      { path: '', component: PostComponent },
+      { path: 'update', component: PostFormChangeComponent }
+    ],
   },
-  {
-    path: ':id/update',
-    component: PostFormChangeComponent }
 ];

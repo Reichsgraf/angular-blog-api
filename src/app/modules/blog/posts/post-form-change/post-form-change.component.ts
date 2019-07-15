@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { catchError, tap } from 'rxjs/operators';
 import { PostsService } from '../../services/posts.service';
@@ -21,13 +21,11 @@ export class PostFormChangeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.route.snapshot.params.id !== undefined) {
-      this.postsService
-        .getPost(this.route.snapshot.params.id)
-        .subscribe(post => {
-          this.post = post;
-        });
-    }
+    this.postsService
+      .getPost(this.route.snapshot.params.id)
+      .subscribe(post => {
+        this.post = post;
+      });
   }
 
   updatePost(event: FormGroup) {
@@ -42,7 +40,6 @@ export class PostFormChangeComponent implements OnInit {
         })
       )
       .subscribe();
-    this.backToBlog();
   }
 
   backToBlog() {

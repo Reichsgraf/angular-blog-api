@@ -14,6 +14,7 @@ import { PostFormChangeComponent } from './post-form-change/post-form-change.com
 // containers
 import { PostsComponent } from './posts.component';
 import { PostComponent } from './post/post.component';
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
 
 // resolvers
 import { PostsResolver } from '../resolvers/posts.resolver';
@@ -21,7 +22,6 @@ import { PostResolver } from '../resolvers/post.resolver';
 
 // routes
 import { POST_ROUTES } from '../routes/post.routes';
-import { PostDialogComponent } from './post-dialog/post-dialog.component';
 
 @NgModule({
   imports: [

@@ -46,7 +46,7 @@ export class PostComponent implements OnInit, OnDestroy {
   }
 
   backToBlog() {
-    this.router.navigate(['blog']);
+    this.router.navigate(['/blog']);
   }
 
   private openDialog(): void {
