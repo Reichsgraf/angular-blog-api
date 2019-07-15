@@ -1,6 +1,6 @@
-import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit, Output} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { catchError, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/switchMap';

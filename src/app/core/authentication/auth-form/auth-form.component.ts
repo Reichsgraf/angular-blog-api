@@ -7,13 +7,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: 'auth-form.component.html'
 })
 export class AuthFormComponent {
+  authInvalid = false;
 
   @Output()
   submitted = new EventEmitter<FormGroup>();
 
   form = this.fb.group({
-    email: ['', Validators.email],
-    password: ['', Validators.required]
+    email: ['', Validators.compose([
+      Validators.required,
+      Validators.pattern('^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$')
+    ])],
+    password: ['', Validators.compose([
+      Validators.required,
+      Validators.minLength(4)
+    ])]
   });
 
   constructor(
@@ -23,17 +30,24 @@ export class AuthFormComponent {
   onSubmit() {
     if (this.form.valid) {
       this.submitted.emit(this.form);
+      this.authInvalid = false;
+    } else {
+      this.authInvalid = true;
     }
   }
 
   get emailFormat() {
     const control = this.form.get('email');
-    return control.hasError('email') && control.touched;
+    return (control.hasError('required') ||
+      control.hasError('pattern')) &&
+      control.touched;
   }
 
   get passwordInvalid() {
     const control = this.form.get('password');
-    return control.hasError('required') && control.touched;
+    return (control.hasError('required') ||
+      control.hasError('minlength')) &&
+      control.touched;
   }
 
 }

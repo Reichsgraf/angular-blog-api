@@ -24,7 +24,6 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  // register
   createUser(email: string, password: string) {
     const body = { email, password };
     return this.http.post('/auth/register', body)
@@ -37,7 +36,6 @@ export class AuthService {
       );
   }
 
-  // login
   loginUser(email: string, password: string) {
     const body = { email, password };
     return this.http.post('/auth/login', body)
@@ -50,7 +48,6 @@ export class AuthService {
       );
   }
 
-  // logout
   logoutUser() {
     localStorage.clear();
   }

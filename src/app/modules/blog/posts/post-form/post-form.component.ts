@@ -30,16 +30,17 @@ export class PostFormComponent implements OnChanges {
     description: ['', Validators.required],
   });
 
+  constructor(
+    private fb: FormBuilder
+  ) {}
+
+
   ngOnChanges(changes: SimpleChanges) {
     if (this.post && this.post.title) {
       const value = this.post;
       this.form.patchValue(value);
     }
   }
-
-  constructor(
-    private fb: FormBuilder
-  ) {}
 
   onSubmit() {
     if (this.form.valid) {
