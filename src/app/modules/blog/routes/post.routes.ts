@@ -24,10 +24,9 @@ export const POST_ROUTES: Routes = [
     component: PostComponent,
     resolve: {
       post: PostResolver,
-    },
-    /*chieldren: [
-      { path: '', component: PostComponent },
-      { path: 'update', component: PostFormChangeComponent }
-    ]*/
-  }
+    }
+  },
+  {
+    path: ':id/update',
+    component: PostFormChangeComponent }
 ];

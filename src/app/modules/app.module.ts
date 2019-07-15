@@ -20,7 +20,6 @@ import { AuthService } from '../core/authentication/services/auth.service';
 // interceptors
 import { TokenInterceptor } from '../core/interceptors/token.interceptor';
 import { ApiPrefixInterceptor } from '../core/interceptors/api-prefix.interceptor';
-import {MatButtonModule, MatDialogModule} from '@angular/material';
 
 // routes
 export const ROUTES: Routes = [

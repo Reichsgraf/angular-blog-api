@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
@@ -15,8 +15,9 @@ import { PostDialogComponent } from '../post-dialog/post-dialog.component';
   templateUrl: 'post.component.html'
 })
 export class PostComponent implements OnInit, OnDestroy {
+
+  @Output()
   post: Post;
-  toggleReadWrite = true;
 
   constructor(
     private postsService: PostsService,
@@ -48,14 +49,9 @@ export class PostComponent implements OnInit, OnDestroy {
     this.router.navigate(['blog']);
   }
 
-  toggle() {
-    this.toggleReadWrite = !this.toggleReadWrite;
-  }
-
   private openDialog(): void {
     const dialogRef = this.dialog
       .open(PostDialogComponent, { width: '250px' });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.removePost();

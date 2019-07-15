@@ -1,26 +1,39 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { catchError, tap } from 'rxjs/operators';
 import { PostsService } from '../../services/posts.service';
-import {Post} from '../../../../shared/models/post.interface';
+import { Post } from '../../../../shared/models/post.interface';
 
 @Component({
   selector: 'post-form-create',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'post-form-change.component.html'
 })
-export class PostFormChangeComponent {
+export class PostFormChangeComponent implements OnInit {
+  @Output()
+  post: Post;
+
   constructor(
     private postsService: PostsService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
+  ngOnInit() {
+    if (this.route.snapshot.params.id !== undefined) {
+      this.postsService
+        .getPost(this.route.snapshot.params.id)
+        .subscribe(post => {
+          this.post = post;
+        });
+    }
+  }
+
   updatePost(event: FormGroup) {
-    /*const id = this.router.snapshot.params.id;
+    const id = this.route.snapshot.params.id;
     const { ...body } = event.value;
-    return this.postsService.updatePost(id, event)
+    return this.postsService.updatePost(id, body)
       .pipe(
         tap(() => this.backToBlog()),
         catchError(err => {
@@ -28,7 +41,8 @@ export class PostFormChangeComponent {
           return err;
         })
       )
-      .subscribe();*/
+      .subscribe();
+    this.backToBlog();
   }
 
   backToBlog() {

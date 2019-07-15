@@ -5,9 +5,9 @@
     </h1>
     <a
       class="button__change"
-      (click)="toggle"> <!--redirect-->
+      [routerLink]="['../', post._id, 'update']">
       <img src="/assets/img/check-active.svg">
-      {{ 'Reading' }}
+      {{ 'Update post' }}
     </a>
   </div>
   <div>
