@@ -1,53 +1,9 @@
-:host {
-  display: block;
-  margin: 50px 0;
-}
-.post {
-  position: relative;
-  background: #fff;
-  box-shadow: 0 3px 4px rgba(0,0,0,.1);
-  border: 1px solid #c1cedb;
-  border-radius: 3px;
-  overflow: hidden;
-  ::ng-deep h1 {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    font-size: 24px;
-  }
-  &__title {
-    display: flex;
-    align-items: center;
-    padding: 30px;
-    background: #f6fafd;
-    border-bottom: 1px solid #c1cedb;
-  }
-}
+@import "../shared/ui/styles";
+
 .post-form {
   h3 {
     margin: 20px 0;
     flex-grow: 1;
-  }
-  &__content, &__subcontent {
-    display:block;
-    overflow:auto;
-    padding: 0 40px;
-  }
-  &__subcontent {
-    padding: 30px 0;
-    border-bottom: 1px solid #d1deeb;
-  }
-  &__submit {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px;
-  }
-  label {
-    position: relative;
-    display: block;
-    margin: 0 0 10px;
   }
   input, textarea {
     outline: 0;
@@ -55,44 +11,21 @@
     padding: 10px 40px 10px 15px;
     margin: 0;
     width: 100%;
-    background: #fff;
+    background: $white;
     color: #545e6f;
     flex-grow: 1;
-    border: 1px solid #d1deeb;
+    border: 1px solid $border;
     border-radius: 3px;
     transition: all 0.2s ease-in-out;
     word-break: break-word;
     &:focus {
-      border-color: #a5b9ce;
+      border-color: darken($border, 50%);
     }
     &::-webkit-input-placeholder {
-      color: #aaa;
+      color: lighten($text, 40%);
     }
   }
   textarea {
     resize: none;
-  }
-  ::ng-deep button {
-    cursor: pointer;
-    outline: 0;
-    border: 0;
-    border-radius: 2px;
-    background: #39a1e7;
-    color: #fff;
-    padding: 10px 18px;
-    font-size: 16px;
-    font-weight: 600;
-    transition: all 0.2s ease-in-out;
-    display: inline-block;
-    &:hover {
-      background: darken(#39a1e7, 5%);
-    }
-  }
-  button {
-    background: #fff;
-    color: #545e6f;
-    &:hover {
-      background: #fff;
-    }
   }
 }

@@ -1,10 +1,10 @@
-<div class="post">
-  <div class="post__title">
+<div class="page">
+  <div class="page__title">
     <h1>
       {{ '«' + post.title + '», ' + post.author }}
     </h1>
     <a
-      class="button__change"
+      class="button__head"
       [routerLink]="['./update']">
       <img src="/assets/img/check-active.svg">
       {{ 'Update post' }}
@@ -13,6 +13,7 @@
   <div>
     <div class="post-form">
       <div class="post-form__content">
+      <div class="post-form__subcontent">
         <label>
           <span>
             <p><img src="{{ post.image }}"></p>
@@ -37,6 +38,7 @@
           </button>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>

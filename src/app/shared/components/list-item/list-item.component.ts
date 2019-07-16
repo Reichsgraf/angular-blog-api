@@ -4,19 +4,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   selector: 'list-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['list-item.component.scss'],
-  template: `
-    <div class="list-item">
-      <a [routerLink]="getRoute(item)">
-        <p class="list-item__title">
-          {{ item.title }}, {{ item.author }}
-        </p>
-        <span>
-          <p><img src="{{ item.image }}"></p>
-          <p class="list-item__description">{{ item.description }}...</p>
-        </span>
-      </a>
-    </div>
-  `
+  templateUrl: 'list-item.component.html'
 })
 export class ListItemComponent {
 

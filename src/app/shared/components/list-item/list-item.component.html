@@ -1,0 +1,11 @@
+<div class="list-item">
+  <a [routerLink]="getRoute(item)">
+    <p class="list-item__title">
+      {{ item.title }}, {{ item.author }}
+    </p>
+    <span>
+          <p><img src="{{ item.image }}"></p>
+          <p class="list-item__description">{{ item.description }}...</p>
+        </span>
+  </a>
+</div>

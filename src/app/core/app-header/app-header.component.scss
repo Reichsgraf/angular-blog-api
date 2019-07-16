@@ -1,6 +1,8 @@
+@import "~src/assets/styles/variables";
+
 .app-header {
-  background: #fff;
-  border-bottom: 1px solid #c1cedb;
+  background: $white;
+  border-bottom: 1px solid $border;
   padding: 15px 0;
   text-align: center;
   img {
