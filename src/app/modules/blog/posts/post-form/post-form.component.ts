@@ -27,7 +27,8 @@ export class PostFormComponent implements OnChanges {
     author: ['', Validators.required],
     content: ['', Validators.required],
     image: ['', Validators.compose([
-      Validators.required
+      Validators.required,
+      Validators.pattern('(.*?)\\.(jpg|png|jpeg)$')
     ])],
     description: ['', Validators.required]
   });
