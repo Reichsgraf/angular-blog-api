@@ -19,11 +19,11 @@ export class PostsService {
       );
   }
 
-  getPost(key: string): Observable<Post> {
-    if (!key) {
+  getPost(id: string): Observable<Post> {
+    if (!id) {
       return {} as Observable<Post>;
     }
-    return this.http.get<Post>(`/posts/${ key }`);
+    return this.http.get<Post>(`/posts/${ id }`);
   }
 
   addPost(post: Post) {

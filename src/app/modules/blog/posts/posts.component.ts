@@ -12,6 +12,7 @@ import { Post } from '../../../shared/models/post.interface';
 })
 export class PostsComponent implements OnInit {
   error = '';
+  sort = false;
   posts: Array<Post>;
 
   constructor(
@@ -20,15 +21,31 @@ export class PostsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.posts = this.route.snapshot.data.posts || [];
+    this.posts = [...this.route.snapshot.data.posts] || [];
     if (!this.posts.length) {
       this.error = 'Empty list, add some post';
     }
   }
 
-  sortByTitle() {
-    this.posts = _.sortBy(this.posts, 'title').reverse();
+  sortByTitle(direction: string) {
+    switch (direction) {
+      case 'asc':
+        return this.posts
+          .sort((currentPost, nextPost) => {
+            return nextPost.title.localeCompare(currentPost.title);
+          });
+      case 'desc':
+        return this.posts
+          .sort((currentPost, nextPost) => {
+            return currentPost.title.localeCompare(nextPost.title);
+          });
+      default:
+        return this.posts = [...this.route.snapshot.data.posts];
+    }
+  }
+
+  groupBy() {
+    return this.posts =
+      _.flatten(_.values(_.groupBy(this.posts, 'author')));
   }
 }
-
-// TODO: sort with title, group with author, LoDASH

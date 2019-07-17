@@ -1,17 +1,50 @@
 <div class="page">
   <div class="page__title">
-    <h1>Posts</h1>
-    <a
-      class="button__head"
-      (click)="sortByTitle()">
-      <img src="/assets/img/sort.svg">
-    </a>
-    <a
-      class="button__head"
-      [routerLink]="['../blog/new']">
-      <img src="/assets/img/add-white.svg">
-      Create
-    </a>
+    <h1>
+      Posts
+    </h1>
+    <div class="dropdown">
+      <a
+        class="button__head button__drop">
+        <img src="/assets/img/sort.svg">
+        Sort
+      </a>
+      <div class="dropdown-content">
+        <a (click)="sortByTitle('asc')">
+          <img src="/assets/img/asc.svg">
+          ascending
+        </a>
+        <a (click)="sortByTitle('desc')">
+          <img src="/assets/img/desc.svg">
+          descending
+        </a>
+        <a (click)="sortByTitle('none')">
+          <img src="/assets/img/cross.svg">
+          none
+        </a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a
+        class="button__head button__drop">
+        <img src="/assets/img/group.svg">
+        Group
+      </a>
+      <div class="dropdown-content">
+        <a (click)="groupBy()">
+          <img src="/assets/img/author.svg">
+          by author
+        </a>
+      </div>
+    </div>
+    <div>
+      <a
+        class="button__head"
+        [routerLink]="['../blog/new']">
+        <img src="/assets/img/add-white.svg">
+        Create
+      </a>
+    </div>
   </div>
   <div>
     <div class="message" *ngIf="error">
