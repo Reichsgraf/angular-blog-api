@@ -3,6 +3,11 @@
     <h1>Posts</h1>
     <a
       class="button__head"
+      (click)="sortByTitle()">
+      <img src="/assets/img/sort.svg">
+    </a>
+    <a
+      class="button__head"
       [routerLink]="['../blog/new']">
       <img src="/assets/img/add-white.svg">
       Create

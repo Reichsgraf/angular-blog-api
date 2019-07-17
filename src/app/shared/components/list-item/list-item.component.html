@@ -4,7 +4,7 @@
       {{ item.title }}, {{ item.author }}
     </p>
     <span>
-          <p><img src="{{ item.image }}"></p>
+          <p><img src="{{ item.image }}" onError="this.src='/assets/img/error.png'"></p>
           <p class="list-item__description">{{ item.description }}...</p>
         </span>
   </a>

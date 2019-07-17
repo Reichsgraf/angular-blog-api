@@ -16,7 +16,7 @@
       <div class="post-form__subcontent">
         <label>
           <span>
-            <p><img src="{{ post.image }}"></p>
+            <p><img src="{{ post.image }}" onError="this.src='/assets/img/error.png'"></p>
             <p class="list-item__description">{{ post.content }}</p>
           </span>
         </label>
@@ -29,7 +29,7 @@
             Back
           </a>
         </div>
-        <div class="post-form__delete" *ngIf="post.title">
+        <div class="post-form__delete">
           <button
             class="button button--delete"
             type="button"

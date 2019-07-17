@@ -5,11 +5,11 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatDialogModule } from '@angular/material';
 
 import { SharedListModule } from '../../../shared/modules/shared.list.module';
+import { SharedPostModule } from './shared/shared.post.module';
 
 // components
-import { PostFormComponent } from './post-form/post-form.component';
-import { PostFormCreateComponent } from './post-form-create/post-form-create.component';
-import { PostFormChangeComponent } from './post-form-change/post-form-change.component';
+import { PostCreateComponent } from './post-create/post-create.component';
+import { PostChangeComponent } from './post-change/post-change.component';
 
 // containers
 import { PostsComponent } from './posts.component';
@@ -29,16 +29,16 @@ import { POST_ROUTES } from '../routes/post.routes';
     ReactiveFormsModule,
     RouterModule.forChild(POST_ROUTES),
     SharedListModule.forRoot(),
+    SharedPostModule.forRoot(),
     MatDialogModule,
     MatButtonModule
   ],
   declarations: [
     PostsComponent,
     PostComponent,
-    PostFormComponent,
     PostDialogComponent,
-    PostFormCreateComponent,
-    PostFormChangeComponent
+    PostCreateComponent,
+    PostChangeComponent
   ],
   entryComponents: [
     PostDialogComponent

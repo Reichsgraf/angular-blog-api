@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 
@@ -14,9 +14,7 @@ import { PostDialogComponent } from '../post-dialog/post-dialog.component';
   styleUrls: ['post.component.scss'],
   templateUrl: 'post.component.html'
 })
-export class PostComponent implements OnInit, OnDestroy {
-
-  @Output()
+export class PostComponent implements OnInit {
   post: Post;
 
   constructor(
@@ -29,8 +27,6 @@ export class PostComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.post = this.route.snapshot.data.post || {};
   }
-
-  ngOnDestroy() {}
 
   removePost() {
     const id = this.route.snapshot.params.id;

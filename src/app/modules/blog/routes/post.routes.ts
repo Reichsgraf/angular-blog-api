@@ -3,8 +3,8 @@ import { PostsComponent } from '../posts/posts.component';
 import { PostsResolver } from '../resolvers/posts.resolver';
 import { PostComponent } from '../posts/post/post.component';
 import { PostResolver } from '../resolvers/post.resolver';
-import { PostFormCreateComponent } from '../posts/post-form-create/post-form-create.component';
-import { PostFormChangeComponent } from '../posts/post-form-change/post-form-change.component';
+import { PostCreateComponent } from '../posts/post-create/post-create.component';
+import { PostChangeComponent } from '../posts/post-change/post-change.component';
 
 
 export const POST_ROUTES: Routes = [
@@ -17,7 +17,7 @@ export const POST_ROUTES: Routes = [
   },
   {
     path: 'new',
-    component: PostFormCreateComponent,
+    component: PostCreateComponent,
   },
   {
     path: ':id',
@@ -26,7 +26,7 @@ export const POST_ROUTES: Routes = [
     },
     children: [
       { path: '', component: PostComponent },
-      { path: 'update', component: PostFormChangeComponent }
+      { path: 'update', component: PostChangeComponent }
     ],
   },
 ];

@@ -6,23 +6,16 @@ import { Subject } from 'rxjs';
 import 'rxjs/add/operator/do';
 
 import { User } from '../../../shared/models/user.interface';
+import { TokenService } from './token.service';
 
 @Injectable()
 export class AuthService {
   user$ = new Subject<User>();
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private tokenService: TokenService
   ) {}
-
-  // TODO: replace to outer class?
-  private setToken(token: string): void {
-    localStorage.setItem('token', token);
-  }
-
-  public getToken(): string {
-    return localStorage.getItem('token');
-  }
 
   createUser(email: string, password: string) {
     const body = { email, password };
@@ -30,7 +23,7 @@ export class AuthService {
       .pipe(
         pluck('token'),
         tap((token: string) => {
-          this.setToken(token);
+          this.tokenService.setToken(token);
           this.user$.next({email, token});
         })
       );
@@ -42,7 +35,7 @@ export class AuthService {
       .pipe(
         pluck('token'),
         tap((token: string) => {
-          this.setToken(token);
+          this.tokenService.setToken(token);
           this.user$.next({ email, token });
         })
       );

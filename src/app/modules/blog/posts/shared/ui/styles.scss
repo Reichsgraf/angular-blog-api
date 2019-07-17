@@ -19,7 +19,7 @@
     background: $input-background;
     border-bottom: 1px solid $border;
   }
-  h1, ::ng-deep h1 {
+  ::ng-deep h1 {
     flex-grow: 1;
     display: flex;
     align-items: center;

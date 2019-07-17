@@ -16,6 +16,7 @@ import { AppHeaderComponent } from '../core/app-header/app-header.component';
 
 // services
 import { AuthService } from '../core/authentication/services/auth.service';
+import { TokenService } from '../core/authentication/services/token.service';
 
 // interceptors
 import { TokenInterceptor } from '../core/interceptors/token.interceptor';
@@ -41,6 +42,7 @@ export const ROUTES: Routes = [
   ],
   providers: [
     AuthService,
+    TokenService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

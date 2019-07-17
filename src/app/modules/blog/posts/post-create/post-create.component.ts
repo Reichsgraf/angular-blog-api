@@ -6,11 +6,10 @@ import { catchError, tap } from 'rxjs/operators';
 import { PostsService } from '../../services/posts.service';
 
 @Component({
-  selector: 'post-form-create',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: 'post-form-create.component.html'
+  selector: 'post-create',
+  templateUrl: 'post-create.component.html'
 })
-export class PostFormCreateComponent {
+export class PostCreateComponent {
   constructor(
     private postsService: PostsService,
     private router: Router

@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import * as _ from 'lodash';
 
 import { Post } from '../../../shared/models/post.interface';
 
@@ -8,7 +10,7 @@ import { Post } from '../../../shared/models/post.interface';
   styleUrls: ['posts.component.scss'],
   templateUrl: 'posts.component.html'
 })
-export class PostsComponent implements OnInit, OnDestroy {
+export class PostsComponent implements OnInit {
   error = '';
   posts: Array<Post>;
 
@@ -24,5 +26,9 @@ export class PostsComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {}
+  sortByTitle() {
+    this.posts = _.sortBy(this.posts, 'title').reverse();
+  }
 }
+
+// TODO: sort with title, group with author, LoDASH

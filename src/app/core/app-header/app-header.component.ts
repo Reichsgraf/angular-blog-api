@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { TokenService } from '../authentication/services/token.service';
 import { AuthService } from '../authentication/services/auth.service';
 
 @Component({
@@ -13,6 +14,10 @@ export class AppHeaderComponent {
 
   @Output()
   logout = new EventEmitter<any>();
+
+  constructor(
+    private tokenService: TokenService
+  ) {}
 
   logoutUser() {
     this.logout.emit();

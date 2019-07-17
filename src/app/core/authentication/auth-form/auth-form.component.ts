@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,33 +6,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['auth-form.component.scss'],
   templateUrl: 'auth-form.component.html'
 })
-export class AuthFormComponent {
-  authInvalid = false;
+export class AuthFormComponent implements OnInit {
+  formSubmitted = false;
+  form: FormGroup;
 
   @Output()
   submitted = new EventEmitter<FormGroup>();
-
-  form = this.fb.group({
-    email: ['', Validators.compose([
-      Validators.required,
-      Validators.pattern('^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$')
-    ])],
-    password: ['', Validators.compose([
-      Validators.required,
-      Validators.minLength(4)
-    ])]
-  });
 
   constructor(
     private fb: FormBuilder
   ) {}
 
+  ngOnInit() {
+    this.form = this.fb.group({
+      email: ['', [
+        Validators.required,
+        Validators.pattern('^[a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,15})$')
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]]
+    });
+  }
+
   onSubmit() {
     if (this.form.valid) {
       this.submitted.emit(this.form);
-      this.authInvalid = false;
+      this.formSubmitted = false;
     } else {
-      this.authInvalid = true;
+      this.formSubmitted = true;
     }
   }
 

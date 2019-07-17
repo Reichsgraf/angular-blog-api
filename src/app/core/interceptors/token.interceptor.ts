@@ -4,11 +4,12 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse } fr
 import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from '../authentication/services/auth.service';
+import { TokenService } from '../authentication/services/token.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(
-    public auth: AuthService
+    public tokenService: TokenService
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler
@@ -18,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     } else {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.auth.getToken()}`
+          Authorization: `Bearer ${this.tokenService.getToken()}`
         }
       });
       return next.handle(request);

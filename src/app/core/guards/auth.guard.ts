@@ -4,16 +4,17 @@ import { CanActivate, Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 
 import { AuthService } from '../authentication/services/auth.service';
+import { TokenService } from '../authentication/services/token.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private authService: AuthService
+    private tokenService: TokenService
   ) {}
 
   canActivate() {
-    const key = this.authService.getToken();
+    const key = this.tokenService.getToken();
     if (!key) {
       this.router.navigate(['/auth/login']);
     }
