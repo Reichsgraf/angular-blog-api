@@ -29,7 +29,6 @@ export class PostFormComponent implements OnInit {
       image: ['', Validators.required],
       description: ['', Validators.required]
     });
-
     if (this.post) {
       this.form.patchValue(this.post);
     }

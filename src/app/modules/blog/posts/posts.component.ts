@@ -12,7 +12,6 @@ import { Post } from '../../../shared/models/post.interface';
 })
 export class PostsComponent implements OnInit {
   error = '';
-  sort = false;
   posts: Array<Post>;
 
   constructor(

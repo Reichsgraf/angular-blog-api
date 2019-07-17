@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'list-item',
@@ -7,7 +7,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   templateUrl: 'list-item.component.html'
 })
 export class ListItemComponent {
-
   @Input()
   item: any;
 

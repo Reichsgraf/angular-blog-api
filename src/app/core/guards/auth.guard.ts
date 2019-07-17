@@ -3,7 +3,6 @@ import { CanActivate, Router } from '@angular/router';
 
 import 'rxjs/add/operator/map';
 
-import { AuthService } from '../authentication/services/auth.service';
 import { TokenService } from '../authentication/services/token.service';
 
 @Injectable()
@@ -20,7 +19,4 @@ export class AuthGuard implements CanActivate {
     }
     return !!key;
   }
-
 }
-
-// TODO: Upgrade without block of main page
